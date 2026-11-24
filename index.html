@@ -6,6 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#faf7f2" id="metaThemeColor" />
   <title>My Reading Log</title>
+  <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
   <style>
     :root {
       --bg: #faf7f2;
@@ -94,7 +95,6 @@
 
     .icon-btn:active { transform: scale(0.97); }
 
-    /* Top Page Switcher: Physical / Digital / Upcoming / All */
     .shelf-switcher-wrap {
       max-width: 1080px;
       margin: 10px auto 0;
@@ -703,9 +703,7 @@
       font-weight: 600;
     }
 
-    .detail-section {
-      margin-bottom: 12px;
-    }
+    .detail-section { margin-bottom: 12px; }
 
     .detail-section-label {
       font-size: 0.72rem;
@@ -724,7 +722,7 @@
       font-size: 0.88rem;
       line-height: 1.5;
       white-space: pre-wrap;
-      max-height: 200px;
+      max-height: 190px;
       overflow-y: auto;
     }
 
@@ -732,7 +730,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .lookup-box {
@@ -810,29 +808,29 @@
     }
 
     .format-checks {
-      display: flex;
-      gap: 10px;
-      padding: 6px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 4px 0;
     }
 
     .check-pill {
-      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      padding: 9px 10px;
+      gap: 6px;
+      padding: 9px 6px;
       border: 1px solid var(--border);
       border-radius: 10px;
       background: var(--bg);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
     }
 
     .check-pill input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
       margin: 0;
       accent-color: var(--accent);
     }
@@ -976,14 +974,14 @@
     <div class="header-top">
       <h1>Reading Log</h1>
       <div class="header-actions">
-        <button class="icon-btn primary-outline" id="fetchCoversBtn">Fetch Covers & Info</button>
+        <button class="icon-btn primary-outline" id="fetchCoversBtn">Fetch Covers &amp; Info</button>
         <button class="icon-btn" id="themeBtn">Theme</button>
         <button class="icon-btn" id="importModalBtn">Import</button>
         <button class="icon-btn" id="exportModalBtn">Export</button>
       </div>
     </div>
 
-    <!-- Top Page Switcher -->
+    <!-- Shelves: Physical / Digital / Upcoming / All -->
     <div class="shelf-switcher-wrap">
       <div class="shelf-switcher" id="shelfSwitcher">
         <button class="shelf-btn active" data-shelf="physical">Physical</button>
@@ -1002,7 +1000,7 @@
 
     <div class="fetch-banner" id="fetchBanner">
       <div style="flex:1;">
-        <div id="fetchStatusText">Fetching covers & descriptions...</div>
+        <div id="fetchStatusText">Fetching covers &amp; descriptions...</div>
         <div class="progress-track"><div class="progress-fill" id="fetchProgressFill"></div></div>
       </div>
       <button class="btn-secondary" id="stopFetchBtn">Stop</button>
@@ -1052,11 +1050,11 @@
           <select id="ratingFilter">
             <option value="0">Any rating</option>
             <option value="5">5 ★ only</option>
-            <option value="4.5">4.5 ★ & up</option>
-            <option value="4">4 ★ & up</option>
-            <option value="3.5">3.5 ★ & up</option>
-            <option value="3">3 ★ & up</option>
-            <option value="2">2 ★ & up</option>
+            <option value="4.5">4.5 ★ &amp; up</option>
+            <option value="4">4 ★ &amp; up</option>
+            <option value="3.5">3.5 ★ &amp; up</option>
+            <option value="3">3 ★ &amp; up</option>
+            <option value="2">2 ★ &amp; up</option>
             <option value="unrated">Unrated / Needs Rating</option>
           </select>
         </div>
@@ -1170,7 +1168,7 @@
         </div>
 
         <div class="field-group">
-          <label>Owned Format (can belong to both without duplicating)</label>
+          <label>Shelves (no duplicates across Physical &amp; Digital)</label>
           <div class="format-checks">
             <label class="check-pill">
               <input type="checkbox" id="isPhysicalInput" />
@@ -1180,17 +1178,20 @@
               <input type="checkbox" id="isDigitalInput" />
               <span>Digital</span>
             </label>
+            <label class="check-pill">
+              <input type="checkbox" id="isUpcomingInput" />
+              <span>Upcoming</span>
+            </label>
           </div>
         </div>
 
         <div class="form-row-2">
           <div class="field-group">
-            <label for="statusInput">Status</label>
+            <label for="statusInput">Reading Status</label>
             <select id="statusInput">
               <option value="read">Finished</option>
               <option value="reading">In Progress</option>
               <option value="tbr">Not Started (TBR)</option>
-              <option value="upcoming">Upcoming Release</option>
               <option value="dnf">DNF</option>
             </select>
           </div>
@@ -1294,8 +1295,13 @@
         </div>
 
         <div class="field-group">
+          <label for="reviewInput">My Review</label>
+          <textarea id="reviewInput" rows="3" placeholder="Write your review of the book..."></textarea>
+        </div>
+
+        <div class="field-group">
           <label for="notesInput">Personal Notes</label>
-          <textarea id="notesInput" rows="2"></textarea>
+          <textarea id="notesInput" rows="2" placeholder="Quick reminders, quotes, or tags..."></textarea>
         </div>
 
         <div class="modal-actions">
@@ -1317,8 +1323,8 @@
       <div class="form-stack">
         <div class="info-note">
           Export your Excel/Google Sheet as <strong>.csv</strong> and upload it here.
-          In <strong>Merge</strong> mode, if a book already exists on one shelf and you import it onto the other,
-          it will combine into one entry (badged <strong>Physical &amp; Digital</strong>) so it never duplicates.
+          In <strong>Merge</strong> mode, if a book already exists on one shelf and you import it onto another,
+          it combines into one entry so it never duplicates.
         </div>
 
         <div class="field-group">
@@ -1334,7 +1340,7 @@
           <select id="importShelfSelect">
             <option value="physical">Physical Books</option>
             <option value="digital">Digital Books</option>
-            <option value="upcoming">Upcoming Releases</option>
+            <option value="upcoming">Upcoming Shelf</option>
           </select>
         </div>
 
@@ -1420,8 +1426,8 @@
   <script id="embeddedThemeData" type="application/json"></script>
 
   <script>
-    const STORAGE_KEY = "reading_log_books_v4";
-    const LEGACY_KEYS = ["reading_log_books_v3", "reading_log_books_v2", "reading_log_books_v1"];
+    const STORAGE_KEY = "reading_log_books_v5";
+    const LEGACY_KEYS = ["reading_log_books_v4", "reading_log_books_v3", "reading_log_books_v2", "reading_log_books_v1"];
     const THEME_KEY = "reading_log_theme_v1";
     const IDB_NAME = "ReadingLogDB";
     const IDB_STORE = "kv";
@@ -1462,6 +1468,7 @@
     const authorInput = document.getElementById("authorInput");
     const isPhysicalInput = document.getElementById("isPhysicalInput");
     const isDigitalInput = document.getElementById("isDigitalInput");
+    const isUpcomingInput = document.getElementById("isUpcomingInput");
     const statusInput = document.getElementById("statusInput");
     const genreInput = document.getElementById("genreInput");
     const dateReadGroup = document.getElementById("dateReadGroup");
@@ -1484,6 +1491,7 @@
     const coverPreview = document.getElementById("coverPreview");
     const coverFileInput = document.getElementById("coverFileInput");
     const descriptionInput = document.getElementById("descriptionInput");
+    const reviewInput = document.getElementById("reviewInput");
     const notesInput = document.getElementById("notesInput");
     const deleteBookBtn = document.getElementById("deleteBookBtn");
 
@@ -1565,25 +1573,34 @@
     }
 
     function normalizeBook(b) {
-      let isPhys = typeof b.isPhysical === "boolean" ? b.isPhysical : false;
-      let isDig = typeof b.isDigital === "boolean" ? b.isDigital : false;
-      if (typeof b.isPhysical !== "boolean" && typeof b.isDigital !== "boolean") {
-        if (b.status === "upcoming") {
-          isPhys = false;
-          isDig = false;
-        } else if (b.format === "digital") {
-          isDig = true;
-        } else {
-          isPhys = true;
-        }
+      let isPhys = Boolean(b.isPhysical);
+      let isDig = Boolean(b.isDigital);
+      let isUpc = Boolean(b.isUpcoming);
+      let status = b.status || "tbr";
+
+      // Migrate legacy status === "upcoming" or format === "digital"/"physical"
+      if (status === "upcoming") {
+        isUpc = true;
+        status = "tbr";
       }
+      if (typeof b.isPhysical !== "boolean" && typeof b.isDigital !== "boolean" && !isUpc) {
+        if (b.format === "digital") isDig = true;
+        else isPhys = true;
+      }
+      if (!["read", "reading", "tbr", "dnf"].includes(status)) {
+        status = "tbr";
+      }
+
       return {
         ...b,
         isPhysical: isPhys,
         isDigital: isDig,
+        isUpcoming: isUpc,
+        status,
         authorSort: b.authorSort || extractSurname(b.author),
         rating: snapQuarter(b.rating),
-        description: b.description || ""
+        description: b.description || "",
+        review: b.review || ""
       };
     }
 
@@ -1598,16 +1615,17 @@
           const ex = map.get(key);
           ex.isPhysical = ex.isPhysical || b.isPhysical;
           ex.isDigital = ex.isDigital || b.isDigital;
+          if (!ex.isPhysical && !ex.isDigital) ex.isUpcoming = ex.isUpcoming || b.isUpcoming;
+          else if (b.isPhysical || b.isDigital) ex.isUpcoming = false;
           if (!ex.coverUrl && b.coverUrl) ex.coverUrl = b.coverUrl;
           if (!ex.description && b.description) ex.description = b.description;
+          if (!ex.review && b.review) ex.review = b.review;
           if (!ex.rating && b.rating) ex.rating = b.rating;
           if (!ex.notes && b.notes) ex.notes = b.notes;
           if (!ex.pages && b.pages) ex.pages = b.pages;
           if (!ex.pubYear && b.pubYear) ex.pubYear = b.pubYear;
           if (!ex.dateRead && b.dateRead) ex.dateRead = b.dateRead;
-          if (ex.status === "upcoming" && b.status !== "upcoming" && (ex.isPhysical || ex.isDigital)) {
-            ex.status = b.status;
-          }
+          if (!ex.releaseDate && b.releaseDate) ex.releaseDate = b.releaseDate;
         }
       }
       return [...map.values()];
@@ -1658,7 +1676,7 @@
       }
 
       if (books.length === 0) {
-        const idbBooks = await idbGet(STORAGE_KEY) || await idbGet("reading_log_books_v3");
+        const idbBooks = await idbGet(STORAGE_KEY) || await idbGet("reading_log_books_v4") || await idbGet("reading_log_books_v3");
         if (Array.isArray(idbBooks) && idbBooks.length > 0) {
           books = deduplicateBooks(idbBooks);
           if (storageAvailable) {
@@ -1710,29 +1728,25 @@
     }
 
     function getRelevantDate(book) {
-      if (book.status === "upcoming") return book.releaseDate || (book.pubYear ? `${book.pubYear}-01-01` : "");
+      if (book.isUpcoming && book.releaseDate) return book.releaseDate;
       if (book.dateRead) return book.dateRead;
+      if (book.releaseDate) return book.releaseDate;
       if (book.pubYear) return `${book.pubYear}-01-01`;
       return "";
     }
 
-    function getFormatLabel(book) {
-      if (book.isPhysical && book.isDigital) return "Physical & Digital";
-      if (book.isPhysical) return "Physical";
-      if (book.isDigital) return "Digital";
-      return "Upcoming";
+    function getShelfLabels(book) {
+      const list = [];
+      if (book.isPhysical) list.push("Physical");
+      if (book.isDigital) list.push("Digital");
+      if (book.isUpcoming) list.push("Upcoming");
+      return list;
     }
 
     function getShelfBooks() {
-      if (activeShelf === "upcoming") {
-        return books.filter(b => b.status === "upcoming");
-      }
-      if (activeShelf === "physical") {
-        return books.filter(b => b.isPhysical && b.status !== "upcoming");
-      }
-      if (activeShelf === "digital") {
-        return books.filter(b => b.isDigital && b.status !== "upcoming");
-      }
+      if (activeShelf === "physical") return books.filter(b => b.isPhysical);
+      if (activeShelf === "digital") return books.filter(b => b.isDigital);
+      if (activeShelf === "upcoming") return books.filter(b => b.isUpcoming);
       return books; // "all" — deduplicated single list
     }
 
@@ -1756,7 +1770,7 @@
       const shelfBooks = getShelfBooks();
       const readBooks = shelfBooks.filter(b => b.status === "read");
       const tbrBooks = shelfBooks.filter(b => b.status === "tbr");
-      const upcomingBooks = books.filter(b => b.status === "upcoming");
+      const upcomingBooks = books.filter(b => b.isUpcoming);
       const ratedBooks = readBooks.filter(b => b.rating > 0);
       const avg = ratedBooks.length
         ? Number((ratedBooks.reduce((sum, b) => sum + b.rating, 0) / ratedBooks.length).toFixed(2))
@@ -1801,7 +1815,7 @@
       filterToggleBtn.classList.toggle("has-filters", hasExtra);
 
       let list = getShelfBooks().filter(book => {
-        if (activeShelf !== "upcoming" && activeStatus !== "all" && book.status !== activeStatus) return false;
+        if (activeStatus !== "all" && book.status !== activeStatus) return false;
         if (gFilter !== "all" && book.genre !== gFilter) return false;
         if (pFilter !== "all" && book.priority !== pFilter) return false;
         if (mFilter !== "all" && book.month !== mFilter) return false;
@@ -1809,7 +1823,7 @@
         if (sFilter === "no" && book.seriesName) return false;
 
         if (q) {
-          const hay = `${book.title} ${book.author} ${book.seriesName} ${book.genre} ${book.description}`.toLowerCase();
+          const hay = `${book.title} ${book.author} ${book.seriesName} ${book.genre} ${book.description} ${book.review}`.toLowerCase();
           if (!hay.includes(q)) return false;
         }
 
@@ -1899,7 +1913,6 @@
     }
 
     function renderBooks() {
-      statusTabsEl.classList.toggle("hidden", activeShelf === "upcoming");
       populateFilterOptions();
       updateStats();
       const shelfBooks = getShelfBooks();
@@ -1913,7 +1926,7 @@
           ? `<div class="empty-state">
                <h3>No ${labels[activeShelf]}books yet</h3>
                <p>${activeShelf === "upcoming"
-                 ? "Add upcoming releases here—once they're out, you can move them into Physical or Digital."
+                 ? "Add upcoming books here—once they release, you can move them onto your Physical or Digital shelf."
                  : "Upload your spreadsheet (.csv), restore a .json backup, or tap <strong>+ Add Book</strong>."}</p>
                <div class="empty-actions">
                  <button type="button" class="btn-primary" style="flex:0 0 auto;padding:10px 18px;" onclick="openImportModal()">Import CSV / JSON</button>
@@ -1931,7 +1944,7 @@
         let badgeHtml = "";
         let metaHtml = "";
 
-        if (book.status === "upcoming") {
+        if (book.isUpcoming && activeShelf === "upcoming") {
           const diff = daysUntil(book.releaseDate);
           let badgeText = "Upcoming";
           if (diff !== null) {
@@ -1945,8 +1958,12 @@
           badgeHtml = `<span class="badge badge-reading">In Progress</span>`;
           metaHtml = `<div class="date-line">${book.pages ? `${book.pages} pages` : "Reading"}</div>`;
         } else if (book.status === "tbr") {
-          badgeHtml = `<span class="badge badge-tbr">${book.priority === "High" ? "High Priority" : "TBR"}</span>`;
-          const plan = [book.month, book.pubYear].filter(Boolean).join(" · ");
+          badgeHtml = book.isUpcoming
+            ? `<span class="badge badge-upcoming">Upcoming</span>`
+            : `<span class="badge badge-tbr">${book.priority === "High" ? "High Priority" : "TBR"}</span>`;
+          const plan = book.isUpcoming && book.releaseDate
+            ? `Out ${formatDate(book.releaseDate)}`
+            : [book.month, book.pubYear].filter(Boolean).join(" · ");
           metaHtml = `<div class="date-line">${plan || (book.pages ? `${book.pages}p` : "Not Started")}</div>`;
         } else if (book.status === "dnf") {
           badgeHtml = `<span class="badge badge-dnf">DNF</span>`;
@@ -1961,8 +1978,11 @@
 
         let formatBadge = "";
         if (activeShelf === "all") {
-          formatBadge = `<span class="badge-format">${book.isPhysical && book.isDigital ? "Phys + Dig" : getFormatLabel(book)}</span>`;
-        } else if (book.isPhysical && book.isDigital && book.status !== "upcoming") {
+          const lbl = book.isPhysical && book.isDigital
+            ? "Phys + Dig"
+            : getShelfLabels(book).join(" · ");
+          if (lbl) formatBadge = `<span class="badge-format">${escapeHtml(lbl)}</span>`;
+        } else if (activeShelf !== "upcoming" && book.isPhysical && book.isDigital) {
           formatBadge = `<span class="badge-format">Also ${activeShelf === "physical" ? "Digital" : "Physical"}</span>`;
         }
 
@@ -2001,13 +2021,11 @@
       }).join("");
     }
 
-    // Fetch both Cover + Description from Google Books / Open Library
     async function fetchMetadataForBook(book) {
       const cleanTitle = book.title.replace(/\(.*?\)/g, "").trim();
       const cleanAuthor = book.author === "Anonymous" ? "" : book.author.split("&")[0].trim();
       const result = { coverUrl: "", description: "" };
 
-      // 1. Open Library Search (Cover + Work Key for description)
       if (!book.coverUrl || !book.description) {
         try {
           const olUrl = `https://openlibrary.org/search.json?title=${encodeURIComponent(cleanTitle)}${cleanAuthor ? `&author=${encodeURIComponent(cleanAuthor)}` : ""}&limit=2&fields=cover_i,key`;
@@ -2035,7 +2053,6 @@
         } catch {}
       }
 
-      // 2. Google Books Fallback (great for descriptions & missing covers)
       if ((!book.coverUrl && !result.coverUrl) || (!book.description && !result.description)) {
         try {
           const q = `intitle:${cleanTitle}${cleanAuthor ? `+inauthor:${cleanAuthor}` : ""}`;
@@ -2102,9 +2119,9 @@
     document.getElementById("fetchCoversBtn").addEventListener("click", fetchMissingInfoBulk);
     document.getElementById("stopFetchBtn").addEventListener("click", () => { abortCoverFetch = true; });
 
-    // Book Information Modal (opens when clicking a card)
+    // Book Information Modal
     function statusLabel(st) {
-      return { read: "Finished", reading: "In Progress", tbr: "Not Started", upcoming: "Upcoming Release", dnf: "DNF" }[st] || st;
+      return { read: "Finished", reading: "In Progress", tbr: "Not Started", dnf: "DNF" }[st] || st;
     }
 
     function openDetailModal(bookId) {
@@ -2119,21 +2136,16 @@
         ? `${escapeHtml(book.seriesName)}${book.seriesNo ? ` #${escapeHtml(book.seriesNo)}` : ""}`
         : "";
 
-      const formatPills = [];
-      if (book.isPhysical) formatPills.push(`<span class="pill accent">Physical</span>`);
-      if (book.isDigital) formatPills.push(`<span class="pill accent">Digital</span>`);
-      if (!book.isPhysical && !book.isDigital && book.status === "upcoming") {
-        formatPills.push(`<span class="pill accent">Upcoming</span>`);
-      }
+      const shelfPills = getShelfLabels(book).map(lbl => `<span class="pill accent">${escapeHtml(lbl)}</span>`);
 
-      const dateLabel = book.status === "upcoming"
+      const dateLabel = book.isUpcoming
         ? (book.releaseDate ? formatDate(book.releaseDate) : "TBD")
         : (book.dateRead ? formatDate(book.dateRead) : "Not logged");
 
-      const upcomingActions = book.status === "upcoming"
+      const upcomingActions = book.isUpcoming
         ? `<div class="upcoming-move-row">
-             <button type="button" class="btn-secondary" id="movePhysicalBtn">+ Add to Physical</button>
-             <button type="button" class="btn-secondary" id="moveDigitalBtn">+ Add to Digital</button>
+             <button type="button" class="btn-secondary" id="movePhysicalBtn">Move to Physical</button>
+             <button type="button" class="btn-secondary" id="moveDigitalBtn">Move to Digital</button>
            </div>`
         : "";
 
@@ -2151,7 +2163,7 @@
             <div class="detail-pills">
               <span class="pill">${statusLabel(book.status)}</span>
               ${book.genre ? `<span class="pill">${escapeHtml(book.genre)}</span>` : ""}
-              ${formatPills.join("")}
+              ${shelfPills.join("")}
             </div>
             <div style="margin-top:6px;">
               ${book.status === "read" ? renderStars(book.rating) : ""}
@@ -2162,7 +2174,7 @@
         ${upcomingActions}
 
         <div class="detail-facts">
-          <div class="fact-item"><span>${book.status === "upcoming" ? "Release Date" : "Finished On"}</span>${escapeHtml(dateLabel)}</div>
+          <div class="fact-item"><span>${book.isUpcoming ? "Release Date" : "Finished On"}</span>${escapeHtml(dateLabel)}</div>
           <div class="fact-item"><span>Pub Year</span>${book.pubYear || "–"}</div>
           <div class="fact-item"><span>Pages</span>${book.pages || "–"}</div>
           <div class="fact-item"><span>Priority / Plan</span>${escapeHtml([book.priority, book.month].filter(Boolean).join(" · ") || "–")}</div>
@@ -2171,6 +2183,11 @@
         <div class="detail-section">
           <div class="detail-section-label">Description</div>
           <div class="detail-text-box" style="${book.description ? "" : "color:var(--muted);font-style:italic;"}">${escapeHtml(book.description || "No description yet. Tap 'Edit Book' to add one or 'Fetch Cover & Desc' to pull it automatically.")}</div>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-section-label">My Review</div>
+          <div class="detail-text-box" style="${book.review ? "" : "color:var(--muted);font-style:italic;"}">${escapeHtml(book.review || "No review yet. Tap 'Edit Book' to write your review.")}</div>
         </div>
 
         ${book.notes ? `
@@ -2194,7 +2211,7 @@
       if (movePhysBtn) {
         movePhysBtn.addEventListener("click", () => {
           book.isPhysical = true;
-          book.status = "tbr";
+          book.isUpcoming = false;
           saveBooks();
           renderBooks();
           detailModal.classList.remove("open");
@@ -2205,7 +2222,7 @@
       if (moveDigBtn) {
         moveDigBtn.addEventListener("click", () => {
           book.isDigital = true;
-          book.status = "tbr";
+          book.isUpcoming = false;
           saveBooks();
           renderBooks();
           detailModal.classList.remove("open");
@@ -2271,7 +2288,6 @@
       renderBooks();
     });
 
-    // Generic modal close
     document.querySelectorAll("[data-close]").forEach(btn => {
       btn.addEventListener("click", () => {
         document.getElementById(btn.dataset.close).classList.remove("open");
@@ -2283,14 +2299,16 @@
       });
     });
 
-    // Book Add / Edit Modal & Quarter-Star Picker
-    function syncStatusFields() {
+    // Add / Edit Modal Logic
+    function syncFormFieldVisibility() {
       const st = statusInput.value;
+      const isUpc = isUpcomingInput.checked;
       dateReadGroup.classList.toggle("hidden", st !== "read");
       ratingGroup.classList.toggle("hidden", st !== "read");
-      releaseDateGroup.classList.toggle("hidden", st !== "upcoming");
+      releaseDateGroup.classList.toggle("hidden", !isUpc);
     }
-    statusInput.addEventListener("change", syncStatusFields);
+    statusInput.addEventListener("change", syncFormFieldVisibility);
+    isUpcomingInput.addEventListener("change", syncFormFieldVisibility);
 
     function setStarRating(val) {
       currentRating = snapQuarter(val);
@@ -2359,6 +2377,7 @@
         authorInput.value = book.author;
         isPhysicalInput.checked = Boolean(book.isPhysical);
         isDigitalInput.checked = Boolean(book.isDigital);
+        isUpcomingInput.checked = Boolean(book.isUpcoming);
         statusInput.value = book.status;
         genreInput.value = book.genre || "";
         dateReadInput.value = book.dateRead || "";
@@ -2374,6 +2393,7 @@
         coverUrlInput.value = book.coverUrl || "";
         updateCoverPreview(book.coverUrl || "");
         descriptionInput.value = book.description || "";
+        reviewInput.value = book.review || "";
         notesInput.value = book.notes || "";
         deleteBookBtn.classList.remove("hidden");
       } else {
@@ -2382,18 +2402,13 @@
         bookIdInput.value = "";
         isPhysicalInput.checked = activeShelf === "physical" || activeShelf === "all";
         isDigitalInput.checked = activeShelf === "digital";
-        if (activeShelf === "upcoming") {
-          isPhysicalInput.checked = false;
-          isDigitalInput.checked = false;
-          statusInput.value = "upcoming";
-        } else {
-          statusInput.value = activeStatus !== "all" ? activeStatus : "tbr";
-        }
+        isUpcomingInput.checked = activeShelf === "upcoming";
+        statusInput.value = activeStatus !== "all" ? activeStatus : "tbr";
         setStarRating(0);
         updateCoverPreview("");
         deleteBookBtn.classList.add("hidden");
       }
-      syncStatusFields();
+      syncFormFieldVisibility();
       bookModal.classList.add("open");
     }
 
@@ -2412,8 +2427,9 @@
 
       let isPhys = isPhysicalInput.checked;
       let isDig = isDigitalInput.checked;
-      if (status !== "upcoming" && !isPhys && !isDig) {
-        isPhys = true; // ensure non-upcoming book sits on at least one shelf
+      const isUpc = isUpcomingInput.checked;
+      if (!isPhys && !isDig && !isUpc) {
+        isPhys = true; // ensure book belongs to at least one shelf
       }
 
       const entry = {
@@ -2423,11 +2439,12 @@
         authorSort: extractSurname(rawAuthor),
         isPhysical: isPhys,
         isDigital: isDig,
+        isUpcoming: isUpc,
         status,
         genre: genreInput.value.trim(),
         rating: status === "read" ? snapQuarter(ratingInput.value) : 0,
         dateRead: status === "read" ? dateReadInput.value : "",
-        releaseDate: status === "upcoming" ? releaseDateInput.value : "",
+        releaseDate: isUpc ? releaseDateInput.value : "",
         pubYear: Number(pubYearInput.value) || 0,
         seriesName: seriesNameInput.value.trim(),
         seriesNo: seriesNoInput.value.trim(),
@@ -2437,6 +2454,7 @@
         startedOn: startedOnInput.value,
         coverUrl: coverUrlInput.value.trim(),
         description: descriptionInput.value.trim(),
+        review: reviewInput.value.trim(),
         notes: notesInput.value.trim()
       };
 
@@ -2575,7 +2593,6 @@
       const s = String(rawStatus || "").toLowerCase().trim();
       if (s === "finished" || s === "read" || s === "completed") return "read";
       if (s === "in progress" || s === "reading" || s === "currently reading") return "reading";
-      if (s === "upcoming" || s === "upcoming release" || s === "pre-order") return "upcoming";
       if (s === "dnf" || s === "did not finish") return "dnf";
       return "tbr";
     }
@@ -2636,6 +2653,7 @@
       const iRelease = col("release date", "pub date");
       const iRating = col("rating", "stars");
       const iDesc = col("description", "synopsis", "summary");
+      const iReview = col("review", "my review", "thoughts");
       const iNotes = col("notes");
       const iPubYear = col("pub year", "year", "publication year");
       const iCover = col("cover url", "cover", "image");
@@ -2648,21 +2666,20 @@
         if (!title) return null;
         const rawAuthor = iAuthor > -1 ? (r[iAuthor] || "").trim() : "";
         const rawFmt = iFormat > -1 ? (r[iFormat] || "").toLowerCase() : "";
+        const rawStatus = iStatus > -1 ? (r[iStatus] || "").toLowerCase().trim() : "";
 
         let isPhysical = false;
         let isDigital = false;
-        let status = iStatus > -1 ? normalizeImportedStatus(r[iStatus]) : (defaultShelf === "upcoming" ? "upcoming" : "tbr");
+        let isUpcoming = false;
 
-        if (rawFmt.includes("both") || (rawFmt.includes("physical") && rawFmt.includes("digital"))) {
-          isPhysical = true; isDigital = true;
-        } else if (rawFmt.includes("digital") || rawFmt.includes("ebook") || rawFmt.includes("kindle")) {
-          isDigital = true;
-        } else if (rawFmt.includes("physical")) {
-          isPhysical = true;
-        } else if (rawFmt.includes("upcoming") || defaultShelf === "upcoming") {
-          status = "upcoming";
-        } else if (status !== "upcoming") {
+        if (rawFmt.includes("physical")) isPhysical = true;
+        if (rawFmt.includes("digital") || rawFmt.includes("ebook") || rawFmt.includes("kindle")) isDigital = true;
+        if (rawFmt.includes("both")) { isPhysical = true; isDigital = true; }
+        if (rawFmt.includes("upcoming") || rawStatus.includes("upcoming")) isUpcoming = true;
+
+        if (!isPhysical && !isDigital && !isUpcoming) {
           if (defaultShelf === "digital") isDigital = true;
+          else if (defaultShelf === "upcoming") isUpcoming = true;
           else isPhysical = true;
         }
 
@@ -2684,7 +2701,8 @@
           authorSort: extractSurname(rawAuthor),
           isPhysical,
           isDigital,
-          status,
+          isUpcoming,
+          status: iStatus > -1 ? normalizeImportedStatus(r[iStatus]) : "tbr",
           rating: iRating > -1 ? normalizeImportedRating(r[iRating]) : 0,
           genre: iGenre > -1 ? (r[iGenre] || "").trim() : "",
           seriesName: sName,
@@ -2698,6 +2716,7 @@
           releaseDate: iRelease > -1 ? normalizeImportedDate(r[iRelease]) : "",
           coverUrl: iCover > -1 ? (r[iCover] || "").trim() : "",
           description: iDesc > -1 ? (r[iDesc] || "").trim() : "",
+          review: iReview > -1 ? (r[iReview] || "").trim() : "",
           notes: iNotes > -1 ? (r[iNotes] || "").trim() : ""
         };
       }).filter(Boolean);
@@ -2754,14 +2773,18 @@
                 const ex = byKey.get(key);
                 const prevPhys = ex.isPhysical;
                 const prevDig = ex.isDigital;
+                const prevUpc = ex.isUpcoming;
                 ex.isPhysical = ex.isPhysical || nb.isPhysical;
                 ex.isDigital = ex.isDigital || nb.isDigital;
+                if (!ex.isPhysical && !ex.isDigital) ex.isUpcoming = ex.isUpcoming || nb.isUpcoming;
+                else if (nb.isPhysical || nb.isDigital) ex.isUpcoming = false;
                 if (!ex.coverUrl && nb.coverUrl) ex.coverUrl = nb.coverUrl;
                 if (!ex.description && nb.description) ex.description = nb.description;
+                if (!ex.review && nb.review) ex.review = nb.review;
                 if (!ex.rating && nb.rating) ex.rating = nb.rating;
                 if (!ex.pages && nb.pages) ex.pages = nb.pages;
                 if (!ex.pubYear && nb.pubYear) ex.pubYear = nb.pubYear;
-                if (prevPhys !== ex.isPhysical || prevDig !== ex.isDigital) combined++;
+                if (prevPhys !== ex.isPhysical || prevDig !== ex.isDigital || prevUpc !== ex.isUpcoming) combined++;
               }
             });
           }
@@ -2771,7 +2794,7 @@
           document.getElementById("importModal").classList.remove("open");
 
           const missingInfo = books.filter(b => !b.coverUrl || !b.description).length;
-          const summary = `Import complete!\n• ${added} new books added\n• ${combined} existing books merged across Physical & Digital\n• ${books.length} total unique books`;
+          const summary = `Import complete!\n• ${added} new books added\n• ${combined} existing books merged across shelves\n• ${books.length} total unique books`;
           if (missingInfo > 0 && confirm(`${summary}\n\nFetch missing covers & descriptions now?`)) {
             fetchMissingInfoBulk();
           } else {
