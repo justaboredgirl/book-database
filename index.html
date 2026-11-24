@@ -33,7 +33,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.4;
+      line-height: 1.45;
       padding-bottom: 88px;
       transition: background 0.2s ease, color 0.2s ease;
     }
@@ -61,7 +61,7 @@
     h1 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.32rem;
+      font-size: 1.3rem;
       letter-spacing: -0.02em;
     }
 
@@ -78,7 +78,7 @@
       color: var(--text);
       border-radius: 10px;
       padding: 6px 10px;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -94,6 +94,7 @@
 
     .icon-btn:active { transform: scale(0.97); }
 
+    /* Top Page Switcher: Physical / Digital / Upcoming / All */
     .shelf-switcher-wrap {
       max-width: 1080px;
       margin: 10px auto 0;
@@ -101,7 +102,7 @@
 
     .shelf-switcher {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       background: var(--surface-alt);
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -113,12 +114,13 @@
       border: none;
       background: transparent;
       color: var(--muted);
-      padding: 7px 6px;
+      padding: 7px 4px;
       border-radius: 9px;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
     }
 
     .shelf-btn.active {
@@ -422,7 +424,7 @@
       left: 7px;
       padding: 3px 7px;
       border-radius: 6px;
-      font-size: 0.67rem;
+      font-size: 0.66rem;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
@@ -439,9 +441,9 @@
       right: 7px;
       padding: 2px 6px;
       border-radius: 5px;
-      font-size: 0.63rem;
+      font-size: 0.62rem;
       font-weight: 700;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.68);
       color: #fff;
     }
 
@@ -517,7 +519,6 @@
       border-radius: var(--radius);
       grid-column: 1 / -1;
     }
-
     .empty-state h3 { margin: 0 0 8px; color: var(--text); font-family: Georgia, serif; }
 
     .empty-actions {
@@ -545,6 +546,7 @@
     }
     .fab:active { transform: scale(0.96); }
 
+    /* Modals */
     .modal-backdrop {
       display: none;
       position: fixed;
@@ -564,7 +566,7 @@
       background: var(--surface);
       color: var(--text);
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       max-height: 92vh;
       overflow-y: auto;
       border-radius: 20px 20px 0 0;
@@ -590,6 +592,147 @@
       font-size: 1.15rem;
       cursor: pointer;
       color: var(--text);
+      flex-shrink: 0;
+    }
+
+    /* Book Info / Details Modal */
+    .detail-hero {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .detail-cover {
+      width: 108px;
+      aspect-ratio: 2 / 3;
+      border-radius: 10px;
+      object-fit: cover;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .detail-cover-placeholder {
+      width: 108px;
+      aspect-ratio: 2 / 3;
+      border-radius: 10px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .detail-main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-title {
+      font-family: Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .detail-author {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .detail-series {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .detail-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .pill.accent {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: transparent;
+    }
+
+    .detail-facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 0.82rem;
+    }
+
+    .fact-item span {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .detail-section {
+      margin-bottom: 12px;
+    }
+
+    .detail-section-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .detail-text-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 10px 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .upcoming-move-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .lookup-box {
@@ -615,7 +758,7 @@
       border: 1px solid var(--border);
       color: var(--text);
       padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
       font-size: 0.82rem;
       cursor: pointer;
@@ -664,6 +807,34 @@
       font-family: inherit;
       background: var(--bg);
       color: var(--text);
+    }
+
+    .format-checks {
+      display: flex;
+      gap: 10px;
+      padding: 6px 0;
+    }
+
+    .check-pill {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .check-pill input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin: 0;
+      accent-color: var(--accent);
     }
 
     .rating-widget {
@@ -725,7 +896,7 @@
       border: none;
       border-radius: 11px;
       padding: 12px;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       font-weight: 700;
       cursor: pointer;
     }
@@ -805,17 +976,19 @@
     <div class="header-top">
       <h1>Reading Log</h1>
       <div class="header-actions">
-        <button class="icon-btn primary-outline" id="fetchCoversBtn">Fetch Covers</button>
+        <button class="icon-btn primary-outline" id="fetchCoversBtn">Fetch Covers & Info</button>
         <button class="icon-btn" id="themeBtn">Theme</button>
         <button class="icon-btn" id="importModalBtn">Import</button>
         <button class="icon-btn" id="exportModalBtn">Export</button>
       </div>
     </div>
 
+    <!-- Top Page Switcher -->
     <div class="shelf-switcher-wrap">
       <div class="shelf-switcher" id="shelfSwitcher">
-        <button class="shelf-btn active" data-shelf="physical">Physical Books</button>
-        <button class="shelf-btn" data-shelf="digital">Digital Books</button>
+        <button class="shelf-btn active" data-shelf="physical">Physical</button>
+        <button class="shelf-btn" data-shelf="digital">Digital</button>
+        <button class="shelf-btn" data-shelf="upcoming">Upcoming</button>
         <button class="shelf-btn" data-shelf="all">All Books</button>
       </div>
     </div>
@@ -829,7 +1002,7 @@
 
     <div class="fetch-banner" id="fetchBanner">
       <div style="flex:1;">
-        <div id="fetchStatusText">Fetching covers...</div>
+        <div id="fetchStatusText">Fetching covers & descriptions...</div>
         <div class="progress-track"><div class="progress-fill" id="fetchProgressFill"></div></div>
       </div>
       <button class="btn-secondary" id="stopFetchBtn">Stop</button>
@@ -859,7 +1032,6 @@
       <button class="tab-btn" data-status="read">Finished</button>
       <button class="tab-btn" data-status="reading">In Progress</button>
       <button class="tab-btn" data-status="tbr">Not Started</button>
-      <button class="tab-btn" data-status="upcoming">Upcoming</button>
       <button class="tab-btn" data-status="dnf">DNF</button>
     </div>
 
@@ -956,6 +1128,18 @@
 
   <button class="fab" id="addBookBtn">+ Add Book</button>
 
+  <!-- Book Information / Details Modal -->
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Book Details</h2>
+        <button class="close-btn" data-close="detailModal">&times;</button>
+      </div>
+
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
   <!-- Add / Edit Book Modal -->
   <div class="modal-backdrop" id="bookModal">
     <div class="modal">
@@ -966,7 +1150,7 @@
 
       <div class="lookup-box">
         <div class="lookup-row">
-          <input type="text" id="olSearchInput" placeholder="Search Open Library for cover/info..." />
+          <input type="text" id="olSearchInput" placeholder="Auto-fill cover & description by title..." />
           <button type="button" class="btn-secondary" id="olSearchBtn">Find</button>
         </div>
         <div class="lookup-results hidden" id="olResults"></div>
@@ -980,17 +1164,22 @@
           <input type="text" id="titleInput" required />
         </div>
 
-        <div class="form-row-2">
-          <div class="field-group">
-            <label for="authorInput">Author *</label>
-            <input type="text" id="authorInput" required />
-          </div>
-          <div class="field-group">
-            <label for="formatInput">Shelf / Format</label>
-            <select id="formatInput">
-              <option value="physical">Physical Book</option>
-              <option value="digital">Digital Book</option>
-            </select>
+        <div class="field-group">
+          <label for="authorInput">Author *</label>
+          <input type="text" id="authorInput" required />
+        </div>
+
+        <div class="field-group">
+          <label>Owned Format (can belong to both without duplicating)</label>
+          <div class="format-checks">
+            <label class="check-pill">
+              <input type="checkbox" id="isPhysicalInput" />
+              <span>Physical</span>
+            </label>
+            <label class="check-pill">
+              <input type="checkbox" id="isDigitalInput" />
+              <span>Digital</span>
+            </label>
           </div>
         </div>
 
@@ -1100,7 +1289,12 @@
         </div>
 
         <div class="field-group">
-          <label for="notesInput">Notes</label>
+          <label for="descriptionInput">Description / Synopsis</label>
+          <textarea id="descriptionInput" rows="3" placeholder="Book synopsis (auto-fetched or enter manually)..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="notesInput">Personal Notes</label>
           <textarea id="notesInput" rows="2"></textarea>
         </div>
 
@@ -1123,14 +1317,14 @@
       <div class="form-stack">
         <div class="info-note">
           Export your Excel/Google Sheet as <strong>.csv</strong> and upload it here.
-          In <strong>Merge</strong> mode, all your existing books and fetched covers stay untouched—only new titles are added.
+          In <strong>Merge</strong> mode, if a book already exists on one shelf and you import it onto the other,
+          it will combine into one entry (badged <strong>Physical &amp; Digital</strong>) so it never duplicates.
         </div>
 
         <div class="field-group">
           <label for="importModeSelect">Import Behaviour</label>
           <select id="importModeSelect">
-            <option value="merge">Merge & Keep Existing Books (Skip Duplicates)</option>
-            <option value="replaceShelf">Replace Current Shelf Only</option>
+            <option value="merge">Merge &amp; Combine Duplicates (Recommended)</option>
             <option value="replaceAll">Replace Entire Library</option>
           </select>
         </div>
@@ -1140,6 +1334,7 @@
           <select id="importShelfSelect">
             <option value="physical">Physical Books</option>
             <option value="digital">Digital Books</option>
+            <option value="upcoming">Upcoming Releases</option>
           </select>
         </div>
 
@@ -1155,7 +1350,7 @@
   <div class="modal-backdrop" id="exportModal">
     <div class="modal">
       <div class="modal-header">
-        <h2>Backup & Save</h2>
+        <h2>Backup &amp; Save</h2>
         <button class="close-btn" data-close="exportModal">&times;</button>
       </div>
 
@@ -1225,15 +1420,15 @@
   <script id="embeddedThemeData" type="application/json"></script>
 
   <script>
-    const STORAGE_KEY = "reading_log_books_v3";
-    const LEGACY_KEYS = ["reading_log_books_v2", "reading_log_books_v1"];
+    const STORAGE_KEY = "reading_log_books_v4";
+    const LEGACY_KEYS = ["reading_log_books_v3", "reading_log_books_v2", "reading_log_books_v1"];
     const THEME_KEY = "reading_log_theme_v1";
     const IDB_NAME = "ReadingLogDB";
     const IDB_STORE = "kv";
 
     let storageAvailable = checkLocalStorage();
     let books = loadBooksSync();
-    let activeShelf = "physical";
+    let activeShelf = "physical"; // "physical" | "digital" | "upcoming" | "all"
     let activeStatus = "all";
     let currentRating = 0;
     let isFetchingCovers = false;
@@ -1254,6 +1449,10 @@
     const resultsCount = document.getElementById("resultsCount");
     const coversCount = document.getElementById("coversCount");
     const storageStatusText = document.getElementById("storageStatusText");
+    const statusTabsEl = document.getElementById("statusTabs");
+
+    const detailModal = document.getElementById("detailModal");
+    const detailContent = document.getElementById("detailContent");
 
     const bookModal = document.getElementById("bookModal");
     const bookForm = document.getElementById("bookForm");
@@ -1261,7 +1460,8 @@
     const bookIdInput = document.getElementById("bookId");
     const titleInput = document.getElementById("titleInput");
     const authorInput = document.getElementById("authorInput");
-    const formatInput = document.getElementById("formatInput");
+    const isPhysicalInput = document.getElementById("isPhysicalInput");
+    const isDigitalInput = document.getElementById("isDigitalInput");
     const statusInput = document.getElementById("statusInput");
     const genreInput = document.getElementById("genreInput");
     const dateReadGroup = document.getElementById("dateReadGroup");
@@ -1283,6 +1483,7 @@
     const coverUrlInput = document.getElementById("coverUrlInput");
     const coverPreview = document.getElementById("coverPreview");
     const coverFileInput = document.getElementById("coverFileInput");
+    const descriptionInput = document.getElementById("descriptionInput");
     const notesInput = document.getElementById("notesInput");
     const deleteBookBtn = document.getElementById("deleteBookBtn");
 
@@ -1297,7 +1498,6 @@
       }
     }
 
-    // IndexedDB backup mirror (resists localStorage clears & handles large cover sets)
     function openIdb() {
       return new Promise((resolve, reject) => {
         if (!window.indexedDB) return reject(new Error("No IndexedDB"));
@@ -1365,29 +1565,67 @@
     }
 
     function normalizeBook(b) {
+      let isPhys = typeof b.isPhysical === "boolean" ? b.isPhysical : false;
+      let isDig = typeof b.isDigital === "boolean" ? b.isDigital : false;
+      if (typeof b.isPhysical !== "boolean" && typeof b.isDigital !== "boolean") {
+        if (b.status === "upcoming") {
+          isPhys = false;
+          isDig = false;
+        } else if (b.format === "digital") {
+          isDig = true;
+        } else {
+          isPhys = true;
+        }
+      }
       return {
         ...b,
-        format: b.format || "physical",
+        isPhysical: isPhys,
+        isDigital: isDig,
         authorSort: b.authorSort || extractSurname(b.author),
-        rating: snapQuarter(b.rating)
+        rating: snapQuarter(b.rating),
+        description: b.description || ""
       };
     }
 
+    function deduplicateBooks(list) {
+      const map = new Map();
+      for (const rawItem of list) {
+        const b = normalizeBook(rawItem);
+        const key = `${(b.title || "").toLowerCase().trim()}||${(b.author || "").toLowerCase().trim()}`;
+        if (!map.has(key)) {
+          map.set(key, b);
+        } else {
+          const ex = map.get(key);
+          ex.isPhysical = ex.isPhysical || b.isPhysical;
+          ex.isDigital = ex.isDigital || b.isDigital;
+          if (!ex.coverUrl && b.coverUrl) ex.coverUrl = b.coverUrl;
+          if (!ex.description && b.description) ex.description = b.description;
+          if (!ex.rating && b.rating) ex.rating = b.rating;
+          if (!ex.notes && b.notes) ex.notes = b.notes;
+          if (!ex.pages && b.pages) ex.pages = b.pages;
+          if (!ex.pubYear && b.pubYear) ex.pubYear = b.pubYear;
+          if (!ex.dateRead && b.dateRead) ex.dateRead = b.dateRead;
+          if (ex.status === "upcoming" && b.status !== "upcoming" && (ex.isPhysical || ex.isDigital)) {
+            ex.status = b.status;
+          }
+        }
+      }
+      return [...map.values()];
+    }
+
     function loadBooksSync() {
-      // 1. Check embedded snapshot (when opened from an exported .html)
       try {
         const embeddedRaw = document.getElementById("embeddedBooksData").textContent.trim();
         if (embeddedRaw) {
           const embedded = JSON.parse(embeddedRaw);
           if (Array.isArray(embedded) && embedded.length > 0 && !localStorage.getItem(STORAGE_KEY)) {
-            const norm = embedded.map(normalizeBook);
+            const norm = deduplicateBooks(embedded);
             if (storageAvailable) localStorage.setItem(STORAGE_KEY, JSON.stringify(norm));
             return norm;
           }
         }
       } catch {}
 
-      // 2. Check current or legacy localStorage keys
       if (storageAvailable) {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw !== null) {
@@ -1397,7 +1635,7 @@
           const oldRaw = localStorage.getItem(oldKey);
           if (oldRaw) {
             try {
-              const migrated = (JSON.parse(oldRaw) || []).map(normalizeBook);
+              const migrated = deduplicateBooks(JSON.parse(oldRaw) || []);
               localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
               return migrated;
             } catch {}
@@ -1420,9 +1658,9 @@
       }
 
       if (books.length === 0) {
-        const idbBooks = await idbGet(STORAGE_KEY);
+        const idbBooks = await idbGet(STORAGE_KEY) || await idbGet("reading_log_books_v3");
         if (Array.isArray(idbBooks) && idbBooks.length > 0) {
-          books = idbBooks.map(normalizeBook);
+          books = deduplicateBooks(idbBooks);
           if (storageAvailable) {
             try { localStorage.setItem(STORAGE_KEY, JSON.stringify(books)); } catch {}
           }
@@ -1478,9 +1716,24 @@
       return "";
     }
 
+    function getFormatLabel(book) {
+      if (book.isPhysical && book.isDigital) return "Physical & Digital";
+      if (book.isPhysical) return "Physical";
+      if (book.isDigital) return "Digital";
+      return "Upcoming";
+    }
+
     function getShelfBooks() {
-      if (activeShelf === "all") return books;
-      return books.filter(b => (b.format || "physical") === activeShelf);
+      if (activeShelf === "upcoming") {
+        return books.filter(b => b.status === "upcoming");
+      }
+      if (activeShelf === "physical") {
+        return books.filter(b => b.isPhysical && b.status !== "upcoming");
+      }
+      if (activeShelf === "digital") {
+        return books.filter(b => b.isDigital && b.status !== "upcoming");
+      }
+      return books; // "all" — deduplicated single list
     }
 
     function populateFilterOptions() {
@@ -1503,7 +1756,7 @@
       const shelfBooks = getShelfBooks();
       const readBooks = shelfBooks.filter(b => b.status === "read");
       const tbrBooks = shelfBooks.filter(b => b.status === "tbr");
-      const upcomingBooks = shelfBooks.filter(b => b.status === "upcoming");
+      const upcomingBooks = books.filter(b => b.status === "upcoming");
       const ratedBooks = readBooks.filter(b => b.rating > 0);
       const avg = ratedBooks.length
         ? Number((ratedBooks.reduce((sum, b) => sum + b.rating, 0) / ratedBooks.length).toFixed(2))
@@ -1517,11 +1770,11 @@
       coversCount.textContent = `${withCovers} / ${shelfBooks.length} covers`;
 
       const fetchBtn = document.getElementById("fetchCoversBtn");
-      const missing = shelfBooks.length - withCovers;
+      const missingInfo = shelfBooks.filter(b => !b.coverUrl || !b.description).length;
       if (!isFetchingCovers) {
         fetchBtn.textContent = shelfBooks.length === 0
-          ? "Fetch Covers"
-          : (missing > 0 ? `Fetch Covers (${missing})` : "Covers Ready");
+          ? "Fetch Covers & Info"
+          : (missingInfo > 0 ? `Fetch Info (${missingInfo})` : "All Info Ready");
       }
     }
 
@@ -1548,7 +1801,7 @@
       filterToggleBtn.classList.toggle("has-filters", hasExtra);
 
       let list = getShelfBooks().filter(book => {
-        if (activeStatus !== "all" && book.status !== activeStatus) return false;
+        if (activeShelf !== "upcoming" && activeStatus !== "all" && book.status !== activeStatus) return false;
         if (gFilter !== "all" && book.genre !== gFilter) return false;
         if (pFilter !== "all" && book.priority !== pFilter) return false;
         if (mFilter !== "all" && book.month !== mFilter) return false;
@@ -1556,7 +1809,7 @@
         if (sFilter === "no" && book.seriesName) return false;
 
         if (q) {
-          const hay = `${book.title} ${book.author} ${book.seriesName} ${book.genre}`.toLowerCase();
+          const hay = `${book.title} ${book.author} ${book.seriesName} ${book.genre} ${book.description}`.toLowerCase();
           if (!hay.includes(q)) return false;
         }
 
@@ -1646,6 +1899,7 @@
     }
 
     function renderBooks() {
+      statusTabsEl.classList.toggle("hidden", activeShelf === "upcoming");
       populateFilterOptions();
       updateStats();
       const shelfBooks = getShelfBooks();
@@ -1654,11 +1908,13 @@
 
       if (filtered.length === 0) {
         const isShelfEmpty = shelfBooks.length === 0;
-        const shelfLabel = activeShelf === "digital" ? "Digital" : (activeShelf === "physical" ? "Physical" : "");
+        const labels = { physical: "Physical ", digital: "Digital ", upcoming: "Upcoming ", all: "" };
         bookGrid.innerHTML = isShelfEmpty
           ? `<div class="empty-state">
-               <h3>No ${shelfLabel ? `${shelfLabel} ` : ""}books yet</h3>
-               <p>Upload your spreadsheet (.csv), restore a .json backup, or tap <strong>+ Add Book</strong>.</p>
+               <h3>No ${labels[activeShelf]}books yet</h3>
+               <p>${activeShelf === "upcoming"
+                 ? "Add upcoming releases here—once they're out, you can move them into Physical or Digital."
+                 : "Upload your spreadsheet (.csv), restore a .json backup, or tap <strong>+ Add Book</strong>."}</p>
                <div class="empty-actions">
                  <button type="button" class="btn-primary" style="flex:0 0 auto;padding:10px 18px;" onclick="openImportModal()">Import CSV / JSON</button>
                  <button type="button" class="btn-secondary" style="padding:10px 16px;" onclick="openBookModal(null)">+ Add Book</button>
@@ -1703,9 +1959,13 @@
           metaHtml = `${renderStars(book.rating)}<div class="date-line">${escapeHtml(info)}</div>`;
         }
 
-        const formatBadge = activeShelf === "all"
-          ? `<span class="badge-format">${book.format === "digital" ? "Digital" : "Physical"}</span>`
-          : "";
+        let formatBadge = "";
+        if (activeShelf === "all") {
+          formatBadge = `<span class="badge-format">${book.isPhysical && book.isDigital ? "Phys + Dig" : getFormatLabel(book)}</span>`;
+        } else if (book.isPhysical && book.isDigital && book.status !== "upcoming") {
+          formatBadge = `<span class="badge-format">Also ${activeShelf === "physical" ? "Digital" : "Physical"}</span>`;
+        }
+
         const genreBadge = book.genre ? `<span class="badge-genre">${escapeHtml(book.genre)}</span>` : "";
         const seriesLine = book.seriesName && book.seriesName !== "Series"
           ? `<div class="book-series">${escapeHtml(book.seriesName)}${book.seriesNo ? ` #${escapeHtml(book.seriesNo)}` : ""}</div>`
@@ -1741,40 +2001,69 @@
       }).join("");
     }
 
-    // Automatic Cover Fetcher (Open Library + Google Books fallback)
-    async function findCoverForBook(book) {
+    // Fetch both Cover + Description from Google Books / Open Library
+    async function fetchMetadataForBook(book) {
       const cleanTitle = book.title.replace(/\(.*?\)/g, "").trim();
       const cleanAuthor = book.author === "Anonymous" ? "" : book.author.split("&")[0].trim();
+      const result = { coverUrl: "", description: "" };
 
-      try {
-        const olUrl = `https://openlibrary.org/search.json?title=${encodeURIComponent(cleanTitle)}${cleanAuthor ? `&author=${encodeURIComponent(cleanAuthor)}` : ""}&limit=2&fields=cover_i`;
-        const res = await fetch(olUrl);
-        if (res.ok) {
-          const data = await res.json();
-          const hit = (data.docs || []).find(d => d.cover_i);
-          if (hit && hit.cover_i) return `https://covers.openlibrary.org/b/id/${hit.cover_i}-M.jpg`;
-        }
-      } catch {}
+      // 1. Open Library Search (Cover + Work Key for description)
+      if (!book.coverUrl || !book.description) {
+        try {
+          const olUrl = `https://openlibrary.org/search.json?title=${encodeURIComponent(cleanTitle)}${cleanAuthor ? `&author=${encodeURIComponent(cleanAuthor)}` : ""}&limit=2&fields=cover_i,key`;
+          const res = await fetch(olUrl);
+          if (res.ok) {
+            const data = await res.json();
+            const doc = (data.docs || [])[0];
+            const coverDoc = (data.docs || []).find(d => d.cover_i);
+            if (!book.coverUrl && coverDoc?.cover_i) {
+              result.coverUrl = `https://covers.openlibrary.org/b/id/${coverDoc.cover_i}-M.jpg`;
+            }
+            if (!book.description && doc?.key) {
+              try {
+                const wRes = await fetch(`https://openlibrary.org${doc.key}.json`);
+                if (wRes.ok) {
+                  const wData = await wRes.json();
+                  const desc = typeof wData.description === "string"
+                    ? wData.description
+                    : (wData.description?.value || "");
+                  if (desc) result.description = desc.trim();
+                }
+              } catch {}
+            }
+          }
+        } catch {}
+      }
 
-      try {
-        const q = `intitle:${cleanTitle}${cleanAuthor ? `+inauthor:${cleanAuthor}` : ""}`;
-        const gbUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=1`;
-        const res = await fetch(gbUrl);
-        if (res.ok) {
-          const data = await res.json();
-          const thumb = data.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
-          if (thumb) return thumb.replace(/^http:\/\//i, "https://");
-        }
-      } catch {}
+      // 2. Google Books Fallback (great for descriptions & missing covers)
+      if ((!book.coverUrl && !result.coverUrl) || (!book.description && !result.description)) {
+        try {
+          const q = `intitle:${cleanTitle}${cleanAuthor ? `+inauthor:${cleanAuthor}` : ""}`;
+          const gbUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=1`;
+          const res = await fetch(gbUrl);
+          if (res.ok) {
+            const data = await res.json();
+            const info = data.items?.[0]?.volumeInfo;
+            if (info) {
+              if (!book.coverUrl && !result.coverUrl && info.imageLinks?.thumbnail) {
+                result.coverUrl = info.imageLinks.thumbnail.replace(/^http:\/\//i, "https://");
+              }
+              if (!book.description && !result.description && info.description) {
+                result.description = info.description.trim();
+              }
+            }
+          }
+        } catch {}
+      }
 
-      return "";
+      return result;
     }
 
-    async function fetchMissingCovers() {
+    async function fetchMissingInfoBulk() {
       if (isFetchingCovers) return;
-      const missing = getShelfBooks().filter(b => !b.coverUrl);
+      const missing = getShelfBooks().filter(b => !b.coverUrl || !b.description);
       if (missing.length === 0) {
-        alert("No books missing covers on this shelf!");
+        alert("All books on this shelf already have covers and descriptions!");
         return;
       }
 
@@ -1785,21 +2074,23 @@
       const progressFill = document.getElementById("fetchProgressFill");
       banner.classList.add("active");
 
-      let foundCount = 0;
+      let updatedCount = 0;
       for (let i = 0; i < missing.length; i++) {
         if (abortCoverFetch) break;
         const book = missing[i];
-        statusText.textContent = `Fetching ${i + 1} of ${missing.length}: ${book.title} (${foundCount} found)`;
+        statusText.textContent = `Fetching ${i + 1} of ${missing.length}: ${book.title} (${updatedCount} updated)`;
         progressFill.style.width = `${Math.round(((i + 1) / missing.length) * 100)}%`;
 
-        const url = await findCoverForBook(book);
-        if (url) {
-          book.coverUrl = url;
-          foundCount++;
+        const meta = await fetchMetadataForBook(book);
+        let changed = false;
+        if (!book.coverUrl && meta.coverUrl) { book.coverUrl = meta.coverUrl; changed = true; }
+        if (!book.description && meta.description) { book.description = meta.description; changed = true; }
+        if (changed) {
+          updatedCount++;
           saveBooks();
-          if (foundCount % 5 === 0) renderBooks();
+          if (updatedCount % 5 === 0) renderBooks();
         }
-        await new Promise(r => setTimeout(r, 180));
+        await new Promise(r => setTimeout(r, 200));
       }
 
       isFetchingCovers = false;
@@ -1808,21 +2099,149 @@
       renderBooks();
     }
 
-    document.getElementById("fetchCoversBtn").addEventListener("click", fetchMissingCovers);
+    document.getElementById("fetchCoversBtn").addEventListener("click", fetchMissingInfoBulk);
     document.getElementById("stopFetchBtn").addEventListener("click", () => { abortCoverFetch = true; });
 
-    // Shelf Switcher (Physical / Digital / All)
+    // Book Information Modal (opens when clicking a card)
+    function statusLabel(st) {
+      return { read: "Finished", reading: "In Progress", tbr: "Not Started", upcoming: "Upcoming Release", dnf: "DNF" }[st] || st;
+    }
+
+    function openDetailModal(bookId) {
+      const book = books.find(b => b.id === bookId);
+      if (!book) return;
+
+      const coverEl = book.coverUrl
+        ? `<img class="detail-cover" src="${escapeHtml(book.coverUrl)}" alt="${escapeHtml(book.title)}" />`
+        : `<div class="detail-cover-placeholder">${escapeHtml(book.title)}</div>`;
+
+      const seriesTxt = book.seriesName && book.seriesName !== "Series"
+        ? `${escapeHtml(book.seriesName)}${book.seriesNo ? ` #${escapeHtml(book.seriesNo)}` : ""}`
+        : "";
+
+      const formatPills = [];
+      if (book.isPhysical) formatPills.push(`<span class="pill accent">Physical</span>`);
+      if (book.isDigital) formatPills.push(`<span class="pill accent">Digital</span>`);
+      if (!book.isPhysical && !book.isDigital && book.status === "upcoming") {
+        formatPills.push(`<span class="pill accent">Upcoming</span>`);
+      }
+
+      const dateLabel = book.status === "upcoming"
+        ? (book.releaseDate ? formatDate(book.releaseDate) : "TBD")
+        : (book.dateRead ? formatDate(book.dateRead) : "Not logged");
+
+      const upcomingActions = book.status === "upcoming"
+        ? `<div class="upcoming-move-row">
+             <button type="button" class="btn-secondary" id="movePhysicalBtn">+ Add to Physical</button>
+             <button type="button" class="btn-secondary" id="moveDigitalBtn">+ Add to Digital</button>
+           </div>`
+        : "";
+
+      const fetchSingleBtn = (!book.coverUrl || !book.description)
+        ? `<button type="button" class="btn-secondary" id="fetchSingleInfoBtn">Fetch Cover &amp; Desc</button>`
+        : "";
+
+      detailContent.innerHTML = `
+        <div class="detail-hero">
+          ${coverEl}
+          <div class="detail-main">
+            <h3 class="detail-title">${escapeHtml(book.title)}</h3>
+            <div class="detail-author">${escapeHtml(book.author)}</div>
+            ${seriesTxt ? `<div class="detail-series">${seriesTxt}</div>` : ""}
+            <div class="detail-pills">
+              <span class="pill">${statusLabel(book.status)}</span>
+              ${book.genre ? `<span class="pill">${escapeHtml(book.genre)}</span>` : ""}
+              ${formatPills.join("")}
+            </div>
+            <div style="margin-top:6px;">
+              ${book.status === "read" ? renderStars(book.rating) : ""}
+            </div>
+          </div>
+        </div>
+
+        ${upcomingActions}
+
+        <div class="detail-facts">
+          <div class="fact-item"><span>${book.status === "upcoming" ? "Release Date" : "Finished On"}</span>${escapeHtml(dateLabel)}</div>
+          <div class="fact-item"><span>Pub Year</span>${book.pubYear || "–"}</div>
+          <div class="fact-item"><span>Pages</span>${book.pages || "–"}</div>
+          <div class="fact-item"><span>Priority / Plan</span>${escapeHtml([book.priority, book.month].filter(Boolean).join(" · ") || "–")}</div>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-section-label">Description</div>
+          <div class="detail-text-box" style="${book.description ? "" : "color:var(--muted);font-style:italic;"}">${escapeHtml(book.description || "No description yet. Tap 'Edit Book' to add one or 'Fetch Cover & Desc' to pull it automatically.")}</div>
+        </div>
+
+        ${book.notes ? `
+          <div class="detail-section">
+            <div class="detail-section-label">Personal Notes</div>
+            <div class="detail-text-box">${escapeHtml(book.notes)}</div>
+          </div>` : ""}
+
+        <div class="modal-actions">
+          ${fetchSingleBtn}
+          <button type="button" class="btn-primary" id="detailEditBtn">Edit Book</button>
+        </div>
+      `;
+
+      document.getElementById("detailEditBtn").addEventListener("click", () => {
+        detailModal.classList.remove("open");
+        openBookModal(book);
+      });
+
+      const movePhysBtn = document.getElementById("movePhysicalBtn");
+      if (movePhysBtn) {
+        movePhysBtn.addEventListener("click", () => {
+          book.isPhysical = true;
+          book.status = "tbr";
+          saveBooks();
+          renderBooks();
+          detailModal.classList.remove("open");
+        });
+      }
+
+      const moveDigBtn = document.getElementById("moveDigitalBtn");
+      if (moveDigBtn) {
+        moveDigBtn.addEventListener("click", () => {
+          book.isDigital = true;
+          book.status = "tbr";
+          saveBooks();
+          renderBooks();
+          detailModal.classList.remove("open");
+        });
+      }
+
+      const singleFetch = document.getElementById("fetchSingleInfoBtn");
+      if (singleFetch) {
+        singleFetch.addEventListener("click", async () => {
+          singleFetch.textContent = "Fetching...";
+          singleFetch.disabled = true;
+          const meta = await fetchMetadataForBook(book);
+          if (!book.coverUrl && meta.coverUrl) book.coverUrl = meta.coverUrl;
+          if (!book.description && meta.description) book.description = meta.description;
+          saveBooks();
+          renderBooks();
+          openDetailModal(book.id);
+        });
+      }
+
+      detailModal.classList.add("open");
+    }
+
+    // Shelf Switcher
     document.getElementById("shelfSwitcher").addEventListener("click", (e) => {
       const btn = e.target.closest(".shelf-btn");
       if (!btn) return;
       document.querySelectorAll(".shelf-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       activeShelf = btn.dataset.shelf;
+      if (activeShelf === "upcoming" && sortBy.value === "dateDesc") sortBy.value = "dateAsc";
       renderBooks();
     });
 
-    // Tabs & Filters
-    document.getElementById("statusTabs").addEventListener("click", (e) => {
+    // Status Tabs & Filters
+    statusTabsEl.addEventListener("click", (e) => {
       const btn = e.target.closest(".tab-btn");
       if (!btn) return;
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
@@ -1864,7 +2283,7 @@
       });
     });
 
-    // Book Modal & Quarter-Star Picker
+    // Book Add / Edit Modal & Quarter-Star Picker
     function syncStatusFields() {
       const st = statusInput.value;
       dateReadGroup.classList.toggle("hidden", st !== "read");
@@ -1938,7 +2357,8 @@
         bookIdInput.value = book.id;
         titleInput.value = book.title;
         authorInput.value = book.author;
-        formatInput.value = book.format || "physical";
+        isPhysicalInput.checked = Boolean(book.isPhysical);
+        isDigitalInput.checked = Boolean(book.isDigital);
         statusInput.value = book.status;
         genreInput.value = book.genre || "";
         dateReadInput.value = book.dateRead || "";
@@ -1953,14 +2373,22 @@
         setStarRating(book.rating || 0);
         coverUrlInput.value = book.coverUrl || "";
         updateCoverPreview(book.coverUrl || "");
+        descriptionInput.value = book.description || "";
         notesInput.value = book.notes || "";
         deleteBookBtn.classList.remove("hidden");
       } else {
         modalTitle.textContent = "Add Book";
         bookForm.reset();
         bookIdInput.value = "";
-        formatInput.value = activeShelf === "digital" ? "digital" : "physical";
-        statusInput.value = activeStatus !== "all" ? activeStatus : "upcoming";
+        isPhysicalInput.checked = activeShelf === "physical" || activeShelf === "all";
+        isDigitalInput.checked = activeShelf === "digital";
+        if (activeShelf === "upcoming") {
+          isPhysicalInput.checked = false;
+          isDigitalInput.checked = false;
+          statusInput.value = "upcoming";
+        } else {
+          statusInput.value = activeStatus !== "all" ? activeStatus : "tbr";
+        }
         setStarRating(0);
         updateCoverPreview("");
         deleteBookBtn.classList.add("hidden");
@@ -1973,9 +2401,7 @@
 
     bookGrid.addEventListener("click", (e) => {
       const card = e.target.closest(".book-card");
-      if (!card) return;
-      const book = books.find(b => b.id === card.dataset.id);
-      if (book) openBookModal(book);
+      if (card) openDetailModal(card.dataset.id);
     });
 
     bookForm.addEventListener("submit", (e) => {
@@ -1984,12 +2410,19 @@
       const status = statusInput.value;
       const rawAuthor = authorInput.value.trim();
 
+      let isPhys = isPhysicalInput.checked;
+      let isDig = isDigitalInput.checked;
+      if (status !== "upcoming" && !isPhys && !isDig) {
+        isPhys = true; // ensure non-upcoming book sits on at least one shelf
+      }
+
       const entry = {
         id,
         title: titleInput.value.trim(),
         author: formatAuthor(rawAuthor),
         authorSort: extractSurname(rawAuthor),
-        format: formatInput.value,
+        isPhysical: isPhys,
+        isDigital: isDig,
         status,
         genre: genreInput.value.trim(),
         rating: status === "read" ? snapQuarter(ratingInput.value) : 0,
@@ -2003,6 +2436,7 @@
         month: monthInput.value.trim(),
         startedOn: startedOnInput.value,
         coverUrl: coverUrlInput.value.trim(),
+        description: descriptionInput.value.trim(),
         notes: notesInput.value.trim()
       };
 
@@ -2030,10 +2464,10 @@
       if (!query) return;
       const resultsBox = document.getElementById("olResults");
       resultsBox.classList.remove("hidden");
-      resultsBox.innerHTML = `<div style="padding:8px;font-size:0.82rem;color:var(--muted);">Searching Open Library...</div>`;
+      resultsBox.innerHTML = `<div style="padding:8px;font-size:0.82rem;color:var(--muted);">Searching...</div>`;
 
       try {
-        const res = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5&fields=title,author_name,cover_i,first_publish_year`);
+        const res = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5&fields=title,author_name,cover_i,first_publish_year,key`);
         const data = await res.json();
         if (!data.docs || !data.docs.length) {
           resultsBox.innerHTML = `<div style="padding:8px;font-size:0.82rem;color:var(--muted);">No matches found.</div>`;
@@ -2054,7 +2488,7 @@
         }).join("");
 
         resultsBox.querySelectorAll(".lookup-item").forEach(item => {
-          item.addEventListener("click", () => {
+          item.addEventListener("click", async () => {
             const doc = data.docs[Number(item.dataset.idx)];
             if (!titleInput.value) titleInput.value = doc.title || "";
             if (!authorInput.value) authorInput.value = (doc.author_name && doc.author_name[0]) || "";
@@ -2065,6 +2499,16 @@
               updateCoverPreview(cover);
             }
             resultsBox.classList.add("hidden");
+
+            if (!descriptionInput.value) {
+              const meta = await fetchMetadataForBook({
+                title: titleInput.value,
+                author: authorInput.value,
+                coverUrl: coverUrlInput.value,
+                description: ""
+              });
+              if (meta.description) descriptionInput.value = meta.description;
+            }
           });
         });
       } catch {
@@ -2077,9 +2521,9 @@
       if (e.key === "Enter") { e.preventDefault(); searchOpenLibrary(); }
     });
 
-    // CSV Parser & Smart Importer
+    // CSV Parser & Smart Deduplicating Importer
     function parseCsvText(text) {
-      const cleanText = text.replace(/^\uFEFF/, ""); // strip UTF-8 BOM if present
+      const cleanText = text.replace(/^\uFEFF/, "");
       const rows = [];
       let row = [];
       let field = "";
@@ -2166,7 +2610,7 @@
       return match ? parseInt(match[1], 10) : 0;
     }
 
-    function csvRowsToBooks(rows, defaultFormat) {
+    function csvRowsToBooks(rows, defaultShelf) {
       if (rows.length < 2) return [];
       const headers = rows[0].map(h => h.toLowerCase().trim());
       const col = (...names) => {
@@ -2191,6 +2635,7 @@
       const iFinished = col("finished on", "date read", "finish date");
       const iRelease = col("release date", "pub date");
       const iRating = col("rating", "stars");
+      const iDesc = col("description", "synopsis", "summary");
       const iNotes = col("notes");
       const iPubYear = col("pub year", "year", "publication year");
       const iCover = col("cover url", "cover", "image");
@@ -2203,9 +2648,23 @@
         if (!title) return null;
         const rawAuthor = iAuthor > -1 ? (r[iAuthor] || "").trim() : "";
         const rawFmt = iFormat > -1 ? (r[iFormat] || "").toLowerCase() : "";
-        const format = rawFmt.includes("digital") || rawFmt.includes("ebook") || rawFmt.includes("kindle")
-          ? "digital"
-          : (rawFmt.includes("physical") ? "physical" : defaultFormat);
+
+        let isPhysical = false;
+        let isDigital = false;
+        let status = iStatus > -1 ? normalizeImportedStatus(r[iStatus]) : (defaultShelf === "upcoming" ? "upcoming" : "tbr");
+
+        if (rawFmt.includes("both") || (rawFmt.includes("physical") && rawFmt.includes("digital"))) {
+          isPhysical = true; isDigital = true;
+        } else if (rawFmt.includes("digital") || rawFmt.includes("ebook") || rawFmt.includes("kindle")) {
+          isDigital = true;
+        } else if (rawFmt.includes("physical")) {
+          isPhysical = true;
+        } else if (rawFmt.includes("upcoming") || defaultShelf === "upcoming") {
+          status = "upcoming";
+        } else if (status !== "upcoming") {
+          if (defaultShelf === "digital") isDigital = true;
+          else isPhysical = true;
+        }
 
         const pubNum = iPubYear > -1 ? parseInt(r[iPubYear], 10) : 0;
         let sName = iSeriesName > -1 ? (r[iSeriesName] || "").trim() : "";
@@ -2223,8 +2682,9 @@
           title,
           author: formatAuthor(rawAuthor),
           authorSort: extractSurname(rawAuthor),
-          format,
-          status: iStatus > -1 ? normalizeImportedStatus(r[iStatus]) : "tbr",
+          isPhysical,
+          isDigital,
+          status,
           rating: iRating > -1 ? normalizeImportedRating(r[iRating]) : 0,
           genre: iGenre > -1 ? (r[iGenre] || "").trim() : "",
           seriesName: sName,
@@ -2237,13 +2697,15 @@
           dateRead: iFinished > -1 ? normalizeImportedDate(r[iFinished]) : "",
           releaseDate: iRelease > -1 ? normalizeImportedDate(r[iRelease]) : "",
           coverUrl: iCover > -1 ? (r[iCover] || "").trim() : "",
+          description: iDesc > -1 ? (r[iDesc] || "").trim() : "",
           notes: iNotes > -1 ? (r[iNotes] || "").trim() : ""
         };
       }).filter(Boolean);
     }
 
     function openImportModal() {
-      document.getElementById("importShelfSelect").value = activeShelf === "digital" ? "digital" : "physical";
+      const sel = document.getElementById("importShelfSelect");
+      sel.value = activeShelf === "digital" ? "digital" : (activeShelf === "upcoming" ? "upcoming" : "physical");
       document.getElementById("importFileInput").value = "";
       document.getElementById("importModal").classList.add("open");
     }
@@ -2265,7 +2727,7 @@
           if (file.name.toLowerCase().endsWith(".json")) {
             const parsed = JSON.parse(content);
             if (!Array.isArray(parsed)) throw new Error("Invalid JSON");
-            incoming = parsed.map(b => normalizeBook({ ...b, format: b.format || defaultShelf }));
+            incoming = parsed.map(b => normalizeBook(b));
           } else {
             const rows = parseCsvText(content);
             incoming = csvRowsToBooks(rows, defaultShelf);
@@ -2273,23 +2735,33 @@
           }
 
           let added = 0;
+          let combined = 0;
+
           if (mode === "replaceAll") {
-            books = incoming;
-            added = incoming.length;
-          } else if (mode === "replaceShelf") {
-            const target = activeShelf === "all" ? defaultShelf : activeShelf;
-            books = books.filter(b => (b.format || "physical") !== target).concat(incoming);
-            added = incoming.length;
+            books = deduplicateBooks(incoming);
+            added = books.length;
           } else {
-            const existingKeys = new Set(
-              books.map(b => `${b.title.toLowerCase().trim()}||${b.author.toLowerCase().trim()}||${b.format || "physical"}`)
+            const byKey = new Map(
+              books.map(b => [`${b.title.toLowerCase().trim()}||${b.author.toLowerCase().trim()}`, b])
             );
             incoming.forEach(nb => {
-              const key = `${nb.title.toLowerCase().trim()}||${nb.author.toLowerCase().trim()}||${nb.format || "physical"}`;
-              if (!existingKeys.has(key)) {
+              const key = `${nb.title.toLowerCase().trim()}||${nb.author.toLowerCase().trim()}`;
+              if (!byKey.has(key)) {
                 books.push(nb);
-                existingKeys.add(key);
+                byKey.set(key, nb);
                 added++;
+              } else {
+                const ex = byKey.get(key);
+                const prevPhys = ex.isPhysical;
+                const prevDig = ex.isDigital;
+                ex.isPhysical = ex.isPhysical || nb.isPhysical;
+                ex.isDigital = ex.isDigital || nb.isDigital;
+                if (!ex.coverUrl && nb.coverUrl) ex.coverUrl = nb.coverUrl;
+                if (!ex.description && nb.description) ex.description = nb.description;
+                if (!ex.rating && nb.rating) ex.rating = nb.rating;
+                if (!ex.pages && nb.pages) ex.pages = nb.pages;
+                if (!ex.pubYear && nb.pubYear) ex.pubYear = nb.pubYear;
+                if (prevPhys !== ex.isPhysical || prevDig !== ex.isDigital) combined++;
               }
             });
           }
@@ -2298,9 +2770,12 @@
           renderBooks();
           document.getElementById("importModal").classList.remove("open");
 
-          const missingCovers = books.filter(b => !b.coverUrl).length;
-          if (missingCovers > 0 && confirm(`Imported ${added} books (${books.length} total)!\n\nWould you like to automatically fetch cover photos now?`)) {
-            fetchMissingCovers();
+          const missingInfo = books.filter(b => !b.coverUrl || !b.description).length;
+          const summary = `Import complete!\n• ${added} new books added\n• ${combined} existing books merged across Physical & Digital\n• ${books.length} total unique books`;
+          if (missingInfo > 0 && confirm(`${summary}\n\nFetch missing covers & descriptions now?`)) {
+            fetchMissingInfoBulk();
+          } else {
+            alert(summary);
           }
         } catch (err) {
           alert(`Import failed: ${err.message || "Could not read file."}`);
@@ -2309,7 +2784,7 @@
       reader.readAsText(file);
     });
 
-    // Export Modal (JSON backup OR full self-contained HTML with saves)
+    // Export Modal
     document.getElementById("exportModalBtn").addEventListener("click", () => {
       document.getElementById("exportModal").classList.add("open");
     });
@@ -2329,7 +2804,6 @@
       clone.querySelector("#embeddedBooksData").textContent = JSON.stringify(books).replace(/<\//g, "<\\/");
       const savedTheme = localStorage.getItem(THEME_KEY) || "";
       clone.querySelector("#embeddedThemeData").textContent = savedTheme.replace(/<\//g, "<\\/");
-      // Clear dynamic grid before saving so script re-renders cleanly on open
       clone.querySelector("#bookGrid").innerHTML = "";
       const html = "<!DOCTYPE html>\n" + clone.outerHTML;
       const blob = new Blob([html], { type: "text/html" });
