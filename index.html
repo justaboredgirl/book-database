@@ -19,21 +19,14 @@
       --header-bg: rgba(250, 247, 242, 0.94);
       --star: #d98218;
       --upcoming: #2d6a6a;
-      --upcoming-soft: #e3f1f1;
       --reading: #5c4d9a;
-      --reading-soft: #eeebf8;
       --tbr: #7c5c2b;
-      --tbr-soft: #f5ecdc;
       --dnf: #8c3b3b;
-      --dnf-soft: #f7e6e6;
       --radius: 14px;
       --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       margin: 0;
@@ -101,7 +94,6 @@
 
     .icon-btn:active { transform: scale(0.97); }
 
-    /* Shelf / Page Switcher */
     .shelf-switcher-wrap {
       max-width: 1080px;
       margin: 10px auto 0;
@@ -132,7 +124,7 @@
     .shelf-btn.active {
       background: var(--surface);
       color: var(--text);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
     }
 
     .container {
@@ -141,7 +133,18 @@
       padding: 14px 16px;
     }
 
-    /* Cover Fetch Banner */
+    .storage-warning {
+      display: none;
+      background: #fff4e5;
+      color: #7c4a03;
+      border: 1px solid #f5d29d;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 0.82rem;
+    }
+    .storage-warning.active { display: block; }
+
     .fetch-banner {
       display: none;
       background: var(--surface);
@@ -155,7 +158,6 @@
       gap: 10px;
       font-size: 0.84rem;
     }
-
     .fetch-banner.active { display: flex; }
 
     .progress-track {
@@ -174,7 +176,6 @@
       transition: width 0.2s ease;
     }
 
-    /* Stats */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -205,7 +206,6 @@
       margin-top: 2px;
     }
 
-    /* Status Tabs */
     .tabs {
       display: flex;
       gap: 6px;
@@ -234,7 +234,6 @@
       border-color: var(--accent);
     }
 
-    /* Search & Filter Bar */
     .search-row {
       display: flex;
       gap: 8px;
@@ -278,7 +277,6 @@
       margin-bottom: 14px;
       box-shadow: var(--shadow);
     }
-
     .filters-panel.open { display: block; }
 
     .filter-grid {
@@ -341,13 +339,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.78rem;
       color: var(--muted);
       margin-bottom: 10px;
       padding: 0 2px;
     }
 
-    /* Book Grid */
     .book-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -373,7 +372,6 @@
       cursor: pointer;
       transition: transform 0.12s ease;
     }
-
     .book-card:active { transform: scale(0.98); }
 
     .cover-wrap {
@@ -416,10 +414,7 @@
       overflow: hidden;
     }
 
-    .cover-placeholder .ph-author {
-      font-size: 0.74rem;
-      color: var(--muted);
-    }
+    .cover-placeholder .ph-author { font-size: 0.74rem; color: var(--muted); }
 
     .badge {
       position: absolute;
@@ -506,49 +501,31 @@
       gap: 2px;
     }
 
-    .stars-row {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .stars-svg-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 1px;
-    }
-
-    .star-svg {
-      width: 13px;
-      height: 13px;
-      display: block;
-    }
-
-    .rating-num {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--muted);
-    }
-
-    .date-line {
-      font-size: 0.71rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .date-line.upcoming-highlight {
-      color: var(--upcoming);
-      font-weight: 600;
-    }
+    .stars-row { display: flex; align-items: center; gap: 4px; }
+    .stars-svg-wrap { display: inline-flex; align-items: center; gap: 1px; }
+    .star-svg { width: 13px; height: 13px; display: block; }
+    .rating-num { font-size: 0.7rem; font-weight: 700; color: var(--muted); }
+    .date-line { font-size: 0.71rem; color: var(--muted); font-weight: 500; }
+    .date-line.upcoming-highlight { color: var(--upcoming); font-weight: 600; }
 
     .empty-state {
       text-align: center;
-      padding: 46px 20px;
+      padding: 40px 20px;
       color: var(--muted);
       background: var(--surface);
       border: 1px dashed var(--border);
       border-radius: var(--radius);
       grid-column: 1 / -1;
+    }
+
+    .empty-state h3 { margin: 0 0 8px; color: var(--text); font-family: Georgia, serif; }
+
+    .empty-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
     }
 
     .fab {
@@ -566,10 +543,8 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
       cursor: pointer;
     }
-
     .fab:active { transform: scale(0.96); }
 
-    /* Modals */
     .modal-backdrop {
       display: none;
       position: fixed;
@@ -580,11 +555,9 @@
       align-items: flex-end;
       justify-content: center;
     }
-
     @media (min-width: 600px) {
       .modal-backdrop { align-items: center; padding: 20px; }
     }
-
     .modal-backdrop.open { display: flex; }
 
     .modal {
@@ -598,10 +571,7 @@
       padding: 18px 18px 26px;
       box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.22);
     }
-
-    @media (min-width: 600px) {
-      .modal { border-radius: 18px; }
-    }
+    @media (min-width: 600px) { .modal { border-radius: 18px; } }
 
     .modal-header {
       display: flex;
@@ -609,12 +579,7 @@
       align-items: center;
       margin-bottom: 12px;
     }
-
-    .modal-header h2 {
-      margin: 0;
-      font-family: Georgia, serif;
-      font-size: 1.22rem;
-    }
+    .modal-header h2 { margin: 0; font-family: Georgia, serif; font-size: 1.22rem; }
 
     .close-btn {
       background: var(--surface-alt);
@@ -634,9 +599,7 @@
       padding: 10px;
       margin-bottom: 12px;
     }
-
     .lookup-row { display: flex; gap: 6px; }
-
     .lookup-row input {
       flex: 1;
       padding: 8px 10px;
@@ -678,7 +641,6 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
     .lookup-item img {
       width: 34px;
       height: 50px;
@@ -688,17 +650,8 @@
       flex-shrink: 0;
     }
 
-    .form-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .form-row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+    .form-stack { display: flex; flex-direction: column; gap: 10px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
     .form-stack input,
     .form-stack select,
@@ -713,7 +666,6 @@
       color: var(--text);
     }
 
-    /* Quarter-Star Picker */
     .rating-widget {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -723,55 +675,13 @@
       flex-direction: column;
       gap: 8px;
     }
-
-    .star-picker-top {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .star-picker {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .star-btn {
-      background: none;
-      border: none;
-      padding: 2px;
-      cursor: pointer;
-      display: inline-flex;
-    }
-
-    .star-btn svg {
-      width: 26px;
-      height: 26px;
-    }
-
-    .rating-readout {
-      margin-left: 6px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text);
-      min-width: 44px;
-    }
-
-    .star-clear {
-      margin-left: auto;
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .rating-fine-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .star-picker-top { display: flex; align-items: center; gap: 6px; }
+    .star-picker { display: flex; align-items: center; gap: 4px; }
+    .star-btn { background: none; border: none; padding: 2px; cursor: pointer; display: inline-flex; }
+    .star-btn svg { width: 26px; height: 26px; }
+    .rating-readout { margin-left: 6px; font-weight: 700; font-size: 0.95rem; color: var(--text); min-width: 44px; }
+    .star-clear { margin-left: auto; font-size: 0.78rem; color: var(--muted); background: none; border: none; cursor: pointer; text-decoration: underline; }
+    .rating-fine-row { display: flex; align-items: center; gap: 8px; }
 
     .step-btn {
       background: var(--surface);
@@ -784,7 +694,6 @@
       cursor: pointer;
       white-space: nowrap;
     }
-
     .step-btn:active { transform: scale(0.95); }
 
     .rating-slider {
@@ -795,12 +704,7 @@
       border: none !important;
     }
 
-    .cover-input-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
+    .cover-input-row { display: flex; gap: 10px; align-items: center; }
     .cover-mini-preview {
       width: 44px;
       height: 64px;
@@ -810,21 +714,9 @@
       object-fit: cover;
       flex-shrink: 0;
     }
+    .upload-label { display: inline-block; margin-top: 5px; font-size: 0.78rem; font-weight: 600; color: var(--accent); cursor: pointer; }
 
-    .upload-label {
-      display: inline-block;
-      margin-top: 5px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent);
-      cursor: pointer;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-    }
+    .modal-actions { display: flex; gap: 10px; margin-top: 14px; }
 
     .btn-primary {
       flex: 1;
@@ -849,14 +741,7 @@
       cursor: pointer;
     }
 
-    /* Theme Customizer */
-    .preset-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
+    .preset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
     .preset-chip {
       border: 1px solid var(--border);
       border-radius: 11px;
@@ -869,22 +754,10 @@
       font-size: 0.78rem;
       font-weight: 700;
     }
-
     .preset-swatches { display: flex; gap: 4px; }
+    .preset-swatch { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); }
 
-    .preset-swatch {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.12);
-    }
-
-    .color-picker-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
+    .color-picker-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .color-input-box {
       display: flex;
       align-items: center;
@@ -894,15 +767,7 @@
       border-radius: 10px;
       padding: 6px 10px;
     }
-
-    .color-input-box input[type="color"] {
-      width: 30px;
-      height: 30px;
-      padding: 0;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
+    .color-input-box input[type="color"] { width: 30px; height: 30px; padding: 0; border: none; background: none; cursor: pointer; }
 
     .info-note {
       font-size: 0.8rem;
@@ -919,7 +784,6 @@
 </head>
 <body>
 
-  <!-- Shared SVG Gradients for 0.25, 0.5, 0.75, 1.0 Star Fills -->
   <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
     <defs>
       <linearGradient id="star-grad-25">
@@ -944,11 +808,10 @@
         <button class="icon-btn primary-outline" id="fetchCoversBtn">Fetch Covers</button>
         <button class="icon-btn" id="themeBtn">Theme</button>
         <button class="icon-btn" id="importModalBtn">Import</button>
-        <button class="icon-btn" id="exportBtn">Export</button>
+        <button class="icon-btn" id="exportModalBtn">Export</button>
       </div>
     </div>
 
-    <!-- Physical / Digital Page Switcher -->
     <div class="shelf-switcher-wrap">
       <div class="shelf-switcher" id="shelfSwitcher">
         <button class="shelf-btn active" data-shelf="physical">Physical Books</button>
@@ -959,6 +822,11 @@
   </header>
 
   <main class="container">
+    <div class="storage-warning" id="storageWarning">
+      Your browser is blocking local storage (common when opening a raw HTML file directly from a phone's Files preview).
+      To keep automatic saves, host this file on <strong>Netlify Drop</strong> or <strong>GitHub Pages</strong>, or use <strong>Export → Save .html</strong> before closing.
+    </div>
+
     <div class="fetch-banner" id="fetchBanner">
       <div style="flex:1;">
         <div id="fetchStatusText">Fetching covers...</div>
@@ -1079,6 +947,7 @@
 
     <div class="results-bar">
       <span id="resultsCount">0 books</span>
+      <span id="storageStatusText">Checking storage...</span>
       <span id="coversCount">0 covers loaded</span>
     </div>
 
@@ -1253,7 +1122,7 @@
 
       <div class="form-stack">
         <div class="info-note">
-          Import a <strong>.csv</strong> exported from Excel / Google Sheets or a <strong>.json</strong> backup.
+          Export your Excel/Google Sheet as <strong>.csv</strong> and upload it here.
           In <strong>Merge</strong> mode, all your existing books and fetched covers stay untouched—only new titles are added.
         </div>
 
@@ -1278,6 +1147,28 @@
           <label for="importFileInput">Choose .csv or .json File</label>
           <input type="file" id="importFileInput" accept=".csv,.json,text/csv,application/json" />
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export / Backup Modal -->
+  <div class="modal-backdrop" id="exportModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Backup & Save</h2>
+        <button class="close-btn" data-close="exportModal">&times;</button>
+      </div>
+
+      <div class="form-stack">
+        <div class="info-note">
+          Your changes auto-save to both <strong>localStorage</strong> and <strong>IndexedDB</strong> in this browser.
+          You can also download a backup file anytime:
+        </div>
+
+        <button type="button" class="btn-primary" id="exportJsonBtn">Download Data Backup (.json)</button>
+        <button type="button" class="btn-secondary" id="exportHtmlBtn" style="padding:12px;font-size:0.92rem;">
+          Download Webpage With All Saves (.html)
+        </button>
       </div>
     </div>
   </div>
@@ -1330,515 +1221,18 @@
     </div>
   </div>
 
+  <script id="embeddedBooksData" type="application/json"></script>
+  <script id="embeddedThemeData" type="application/json"></script>
+
   <script>
-    const STORAGE_KEY = "reading_log_books_v2";
+    const STORAGE_KEY = "reading_log_books_v3";
+    const LEGACY_KEYS = ["reading_log_books_v2", "reading_log_books_v1"];
     const THEME_KEY = "reading_log_theme_v1";
+    const IDB_NAME = "ReadingLogDB";
+    const IDB_STORE = "kv";
 
-    // [title, rawAuthor, status, rating, genre, seriesName, seriesNo, pages, pubYear, month, priority, startedOn]
-    const SHEET_ROWS = [
-      ["In Your Dreams","Adams, Sarah","tbr",0,"Romance","When In Rome","4",368,2025,"November","High",""],
-      ["Diary of an Oxygen Thief","Anonymous","tbr",0,"Lit-Fic","","",160,2006,"","High",""],
-      ["The Blind Assasin","Atwood, Margaret","reading",0,"Lit-Fic","","",488,2000,"","High",""],
-      ["Is This A Cry For Help?","Austin, Emily","tbr",0,"Lit-Fic","","",256,2026,"","High",""],
-      ["Before We Were Strangers","Carlind, Renee","tbr",0,"Romance","","",368,2015,"","High",""],
-      ["Penance","Clark, Eliza","tbr",0,"Lit-Fic","","",272,2023,"","High",""],
-      ["Nothing Special","Flattery, Nicole","tbr",0,"Lit-Fic","","",0,2023,"","High",""],
-      ["Home Front","Hannah, Kristin","tbr",0,"Lit-Fic","","",496,2012,"November","High",""],
-      ["Night Road","Hannah, Kristin","tbr",0,"Lit-Fic","","",720,2011,"2027","Medium",""],
-      ["The Bride Test","Hoang, Helen","tbr",0,"Romance","The Kiss Quotient","2",0,2019,"","High",""],
-      ["The Heart Principle","Hoang, Helen","tbr",0,"Romance","The Kiss Quotient","3",0,2021,"","High",""],
-      ["So Late In the Day","Keegan, Claire","tbr",0,"Lit-Fic","","",560,2023,"","High",""],
-      ["Eurotrash","Kracht, Christian","tbr",0,"Lit-Fic","","",190,2024,"","High",""],
-      ["The Paradise Problem","Lauren, Christina","tbr",0,"Romance","","",0,2024,"","High",""],
-      ["Amsterdam","McEwan, Ian","tbr",0,"Lit-Fic","","",464,1998,"","High",""],
-      ["Never Lie","McFadden, Frieda","tbr",0,"Thriller","","",256,2022,"November","High",""],
-      ["Loved One","Muharrar, Aisha","tbr",0,"Lit-Fic","","",0,2025,"","High",""],
-      ["Everything that is Beautiful","Nealon, Lousie","tbr",0,"Lit-Fic","","",0,2026,"","High",""],
-      ["Tom Lake","Patchett, Ann","tbr",0,"Lit-Fic","","",0,2023,"","High",""],
-      ["The Bell Jar","Plath, Sylvia","tbr",0,"Lit-Fic","","",0,1963,"November","High",""],
-      ["The Seven Year Slip","Poston, Ashley","tbr",0,"Romance","","",416,2023,"November","High",""],
-      ["Victorious","Schwab, V.E","reading",0,"Fantasy","(Series)","",0,0,"","High",""],
-      ["Fundamentally","Younis, Nussaibah","tbr",0,"Lit-Fic","","",0,2025,"","High",""],
-      ["The Book Thief","Zusak, Markus","tbr",0,"Historical","","",592,2005,"","High",""],
-      ["The Long Game","Armas, Elena","tbr",0,"Romance","Green Oak","1",432,2023,"2027","Medium",""],
-      ["The Fiance Dilemma","Armas, Elena","tbr",0,"Romance","Green Oak","2",480,2024,"2027","Medium",""],
-      ["The Handmaid's Tale","Atwood, Margaret","tbr",0,"Lit-Fic","The Handmaid's Tale","1",521,1985,"2027","Medium",""],
-      ["Mansfield Park","Austen, Jane","tbr",0,"Classics","","",409,1814,"2027","Medium",""],
-      ["It Happened One Summer","Bailey, Tessa","tbr",0,"Romance","Bellinger Sisters","1",353,2021,"2027","Medium",""],
-      ["Hook, Line & Sinker","Bailey, Tessa","tbr",0,"Romance","Bellinger Sisters","2",384,2022,"2027","Medium",""],
-      ["The Luminaries","Catton, Eleanor","tbr",0,"Historical","","",384,2013,"2027","Medium",""],
-      ["Face Off","Curto, Chelsea","tbr",0,"Romance","DC Stars","1",494,0,"2027","Medium",""],
-      ["Power Play","Curto, Chelsea","tbr",0,"Romance","DC Stars","2",585,0,"2027","Medium",""],
-      ["Slap Shot","Curto, Chelsea","tbr",0,"Romance","DC Stars","3",602,0,"2027","Medium",""],
-      ["All The Lights We Cannot See","Doerr, Anthony","tbr",0,"Lit-Fic","","",0,2014,"2027","Medium",""],
-      ["The Adults","Espach, Alison","tbr",0,"Lit-Fic","","",0,2011,"2027","Medium",""],
-      ["My Brilliant Friend","Ferrante, Elena","tbr",0,"Lit-Fic","Neapolitan Novels","1",478,2011,"2027","Medium",""],
-      ["The Story of the Lost Child","Ferrante, Elena","tbr",0,"Lit-Fic","Neapolitan Novels","4",224,2014,"2027","Medium",""],
-      ["The Story of a New Name","Ferrante, Elena","tbr",0,"Lit-Fic","Neapolitan Novels","3",0,2012,"2027","Medium",""],
-      ["Those Who Leave and Those Who Stay","Ferrante, Elena","tbr",0,"Lit-Fic","Neapolitan Novels","4",0,2013,"2027","Medium",""],
-      ["Listening Still","Griffin, Anne","tbr",0,"Lit-Fic","","",448,2021,"2027","Medium",""],
-      ["Firefly Lane","Hannah, Kristin","tbr",0,"Lit-Fic","Firefly Lane","1",512,2008,"2027","Medium",""],
-      ["The Four Winds","Hannah, Kristin","tbr",0,"Lit-Fic","","",336,2021,"2027","Medium",""],
-      ["The Great Alone","Hannah, Kristin","tbr",0,"Lit-Fic","","",464,2018,"2027","Medium",""],
-      ["Never","Hastings, Jessa","tbr",0,"Fantasy","Never","1",384,2023,"2027","Medium",""],
-      ["Great Big Beautiful Life","Henry, Emily","tbr",0,"Romance","","",368,2025,"2027","Medium",""],
-      ["Maybe In Another Life","Jenkins Reid, Taylor","tbr",0,"Lit-Fic","","",0,2015,"2027","Medium",""],
-      ["One True Loves","Jenkins Reid, Taylor","tbr",0,"Lit-Fic","","",0,2016,"2027","Medium",""],
-      ["Pachinko","Jin Lee, Min","tbr",0,"Historical","","",0,0,"2027","Medium",""],
-      ["Bad Girl Reputation","Kennedy, Elle","tbr",0,"Romance","Avalon Bay","2",560,2022,"2027","Medium",""],
-      ["The Summer Girl","Kennedy, Elle","tbr",0,"Romance","Avalon Bay","3",336,2023,"2027","Medium",""],
-      ["The Graham Effect","Kennedy, Elle","tbr",0,"Romance","Campus Diaries","1",192,2023,"2027","Medium",""],
-      ["The Dixon Rule","Kennedy, Elle","tbr",0,"Romance","Campus Diaries","2",400,2024,"2027","Medium",""],
-      ["The Charlie Method","Kennedy, Elle","tbr",0,"Romance","Campus Diaries","3",352,2025,"2027","Medium",""],
-      ["Fairy Tale","King, Stephen","tbr",0,"Horror","","",0,2022,"2027","Medium",""],
-      ["Pet Cemetary","King, Stephen","tbr",0,"Horror","","",0,1983,"2027","Medium",""],
-      ["Katabasis","Kuang, R.F","tbr",0,"Fantasy","","",336,2025,"2027","Medium",""],
-      ["Taipei Story","Kuang, R.F","tbr",0,"Lit-Fic","","",304,2026,"2027","Medium",""],
-      ["The Un-Honeymooners","Lauren, Christina","tbr",0,"Romance","","",336,2019,"2027","Medium",""],
-      ["No Season But The Summer","Leyser, Matilda","tbr",0,"Lit-Fic","","",0,2024,"2027","Medium",""],
-      ["A Court of Thorns and Roses","Maas, Sarah J.","tbr",0,"Fantasy","ACOTAR","1",320,2015,"2027","Medium",""],
-      ["A Court of Mist and Fury","Maas, Sarah J.","tbr",0,"Fantasy","ACOTAR","2",400,2016,"2027","Medium",""],
-      ["A Court of Wings and Ruin","Maas, Sarah J.","tbr",0,"Fantasy","ACOTAR","3",416,2017,"2027","Medium",""],
-      ["A Court of Silver Flames","Maas, Sarah J.","tbr",0,"Fantasy","ACOTAR","4",368,2021,"2027","Medium",""],
-      ["Kingdom of the Wicked","Maniscalco, Kerri","tbr",0,"Fantasy","","",0,0,"2027","Medium",""],
-      ["Atonement","McEwan, Ian","tbr",0,"Lit-Fic","","",607,2001,"2027","Medium",""],
-      ["Our Deadly Summer","McLyssaght, Emer & Breen, Sarah","tbr",0,"Lit-Fic","","",384,2024,"2027","Medium",""],
-      ["The Song of Achilles","Miller, Madeline","tbr",0,"Historical","","",336,2011,"2027","Medium",""],
-      ["The Wind-Up Bird Chronicle","Murakami, Haruki","tbr",0,"Lit-Fic","","",384,1994,"2027","Medium",""],
-      ["One Day","Nicholls, David","tbr",0,"Lit-Fic","","",400,2009,"2027","Medium",""],
-      ["Acts of Desperation","Nolan, Megan","tbr",0,"Lit-Fic","","",279,2021,"2027","Medium",""],
-      ["Promising Young Women","O'Donoghue, Caroline","tbr",0,"Lit-Fic","","",400,2018,"2027","Medium",""],
-      ["The Road Trip","O'Leary, Beth","tbr",0,"Romance","","",418,2021,"2027","Medium",""],
-      ["Where The Crawdads Sing","Owens, Delia","tbr",0,"Lit-Fic","","",384,2018,"2027","Medium",""],
-      ["A Murderous Affair","Purcell, Siobhan","tbr",0,"Thriller","","",448,2024,"2027","Medium",""],
-      ["Beautiful World, Where Are You?","Rooney, Sally","tbr",0,"Lit-Fic","","",384,2021,"2027","Medium",""],
-      ["Conversations with Friends","Rooney, Sally","tbr",0,"Lit-Fic","","",432,2017,"2027","Medium",""],
-      ["Normal People","Rooney, Sally","tbr",0,"Lit-Fic","","",208,2018,"2027","Medium",""],
-      ["Soul Searching","Sage, Lyla","tbr",0,"Romance","(Series)","",0,0,"2027","Medium",""],
-      ["The Secret Life of Addie Larue","Schwab, V.E","tbr",0,"Fantasy","","",384,2020,"2027","Medium",""],
-      ["Wild Love","Silver, Elsie","tbr",0,"Romance","Rose Hill","1",0,2024,"2027","Medium",""],
-      ["Wild Eyes","Silver, Elsie","tbr",0,"Romance","Rose Hill","2",400,2024,"2027","Medium",""],
-      ["Wild Side","Silver, Elsie","tbr",0,"Romance","Rose Hill","3",0,2025,"2027","Medium",""],
-      ["Wild Card","Silver, Elsie","tbr",0,"Romance","Rose Hill","4",0,2025,"2027","Medium",""],
-      ["On Beauty","Smith, Zadie","tbr",0,"Lit-Fic","","",464,2005,"2027","Medium",""],
-      ["Dracula","Stoker, Bram","tbr",0,"Classics","","",416,1897,"2027","Medium",""],
-      ["The Little Friend","Tartt, Donna","tbr",0,"Lit-Fic","","",576,2002,"2027","Medium",""],
-      ["Karoo","Teisch, Steve","tbr",0,"Lit-Fic","","",0,1998,"2027","Medium",""],
-      ["The Island of the Day Before","Umberto Eco","tbr",0,"Classics","","",513,1994,"2027","Medium",""],
-      ["Butcher & Blackbird","Weaver, Brynne","tbr",0,"Romance","(Series)","",0,0,"2027","Medium",""],
-      ["Such a Good Couple","White, Sophie","tbr",0,"Lit-Fic","","",480,2025,"2027","Medium",""],
-      ["The Picture of Dorian Grey","Wilde, Oscar","tbr",0,"Romance","(Series)","",0,0,"2027","Medium",""],
-      ["Stoner","Williams, John","tbr",0,"Lit-Fic","","",288,1973,"2027","Medium",""],
-      ["A Little Life","Yanagihara, Hanya","tbr",0,"Lit-Fic","","",814,2015,"2027","Medium",""],
-      ["Six Four","Yokoyama, Hideo","tbr",0,"Thriller","","",576,2012,"2027","Medium",""],
-      ["Alchemised","Yu, Sen Lin","tbr",0,"Fantasy","","",1040,2025,"2027","Medium",""],
-      ["When in Rome","Adams, Sarah","read",4,"Romance","When In Rome","1",320,2022,"","",""],
-      ["Practice Makes Perfect","Adams, Sarah","read",4,"Romance","When In Rome","2",368,2023,"","",""],
-      ["Beg, Borrow, or Steal","Adams, Sarah","read",4,"Romance","When In Rome","3",400,2025,"","",""],
-      ["The List","Adegoke, Yomi","read",3,"Lit-Fic","","",336,2023,"","",""],
-      ["Everything I Know About Love","Alderton, Dolly","read",3,"Non-Fic","","",384,2018,"","",""],
-      ["Ghosts","Alderton, Dolly","read",4,"Classics","","",320,2020,"","",""],
-      ["Madonna in a Fur Coat","Ali, Sabahattin","read",5,"Lit-Fic","","",168,1943,"","",""],
-      ["The Spanish Love Deception","Armas, Elena","read",3,"Romance","Love Deception","1",400,2021,"","",""],
-      ["The American Roommate Experiment","Armas, Elena","read",4,"Romance","Love Deception","2",448,2022,"","",""],
-      ["The Fine Print","Asher, Lauren","read",4,"Romance","Dreamland Billionaires","1",480,2021,"","",""],
-      ["Terms and Conditions","Asher, Lauren","read",4,"Romance","Dreamland Billionaires","2",592,2022,"","",""],
-      ["Final Offer","Asher, Lauren","read",4,"Romance","Dreamland Billionaires","3",592,2023,"","",""],
-      ["Sense and Sensibility","Austen, Jane","read",3,"Classics","","",256,1811,"","",""],
-      ["Everyone in the Room will Someday be Dead","Austin, Emily","read",5,"Lit-Fic","","",320,2021,"","",""],
-      ["Interesting Facts About Space","Austin, Emily","read",4,"Lit-Fic","","",304,2024,"","",""],
-      ["We Could Be Rats","Austin, Emily","read",5,"Lit-Fic","","",305,2025,"","",""],
-      ["Bunny","Awad, Mona","read",4,"Lit-Fic","Bunny","1",432,2019,"","",""],
-      ["Beartown","Backman, Fredrik","read",4,"Lit-Fic","Beartown","1",384,2017,"","",""],
-      ["Secretly Yours","Bailey, Tessa","read",3,"Romance","A Vine Mess","1",384,2023,"","",""],
-      ["Unfortunately Yours","Bailey, Tessa","read",1,"Romance","A Vine Mess","2",416,2023,"","",""],
-      ["Fix Her Up","Bailey, Tessa","read",4,"Romance","Hot & Hammered","1",352,2019,"","",""],
-      ["Love Her or Lose Her","Bailey, Tessa","read",3,"Romance","Hot & Hammered","2",368,2020,"","",""],
-      ["Tools of Engagement","Bailey, Tessa","read",4,"Romance","Hot & Hammered","3",448,2020,"","",""],
-      ["Bat Eater","Baker, Kylie Lee","read",0,"Horror","","",0,0,"","",""],
-      ["Another Country","Baldwin, James","read",4,"Lit-Fic","","",128,1962,"","",""],
-      ["Permafrost","Baltasar, Eva","read",4,"Lit-Fic","","",384,2018,"","",""],
-      ["The Inheritance Games","Barnes, Jennifer Lynn","read",4,"Fantasy","The Inheritance Games","1",368,2020,"","",""],
-      ["The Hawthorne Legacy","Barnes, Jennifer Lynn","read",4,"Fantasy","The Inheritance Games","2",386,2021,"","",""],
-      ["The Final Gambit","Barnes, Jennifer Lynn","read",4,"Fantasy","The Inheritance Games","3",480,2022,"","",""],
-      ["The Brother's Hawthorne","Barnes, Jennifer Lynn","read",0,"Mystery","The Inheritance Games","4",460,2023,"November","",""],
-      ["Tender is the Flesh","Bazterrica, Agusta","read",4,"Horror","","",352,2017,"","",""],
-      ["The Vanishing Half","Bennet, Brit","read",4,"Lit-Fic","","",336,2020,"","",""],
-      ["Madwoman","Bieker, Chelsea","read",4,"Lit-Fic","","",416,2024,"","",""],
-      ["Next of Kin","Bonam-Young, Hannah","read",4,"Romance","Next","1",384,2022,"","",""],
-      ["Next To You","Bonam-Young, Hannah","read",4,"Romance","Next","2",448,2022,"","",""],
-      ["People Watching","Bonam-Young, Hannah","tbr",0,"Romance","(Series)","",0,0,"","",""],
-      ["First-Time Caller","Borison, BK","read",5,"Romance","Heartstrings","1",464,2025,"","",""],
-      ["And Now Back to You","Borison, BK","read",5,"Romance","Heartstrings","2",304,2026,"","",""],
-      ["The Cat and the City","Bradley, Nick","read",4,"Lit-Fic","","",359,2020,"","",""],
-      ["How To Kill Men and Get Away With It","Brent, Katy","read",3,"Thriller","Kitty Collins","1",400,2022,"","",""],
-      ["The Murder After The Night Before","Brent, Katy","read",4,"Thriller","","",384,2023,"","",""],
-      ["Wuthering Heights","Bronte, Emily","read",4,"Classics","","",368,1847,"","",""],
-      ["Careering","Buchanan, Daisy","read",3,"Lit-Fic","","",400,2022,"","",""],
-      ["Limelight","Buchanan, Daisy","read",3,"Lit-Fic","","",320,2023,"","",""],
-      ["Pity Patry","Buchanan, Daisy","read",5,"Lit-Fic","","",432,2024,"","",""],
-      ["Love Scene","Carey, Anna","read",0,"Romance","","",0,0,"","",""],
-      ["Edith Holler","Carey, Edward","read",4,"Lit-Fic","","",832,2023,"","",""],
-      ["The Fixer","Carroll, Claudia","read",3,"Lit-Fic","","",352,2021,"","",""],
-      ["The Love Algorithm","Carroll, Claudia","read",3,"Romance","","",0,2022,"","",""],
-      ["Small Pleasures","Chambers, Clare","read",3,"Lit-Fic","","",496,2020,"","",""],
-      ["The Storm We Made","Chan, Vanessa","read",4,"Historical","","",256,2024,"","",""],
-      ["Falling Hard for the Royal Guard","Clawson, Megan","read",4,"Romance","","",240,2023,"","",""],
-      ["The Love Shack","Costello, Jane","read",3,"Romance","","",224,2015,"","",""],
-      ["Outline","Cusk, Rachel","read",3,"Lit-Fic","Outline","1",192,2014,"","",""],
-      ["Transit","Cusk, Rachel","read",0,"Lit-Fic","Outline","2",176,2016,"","",""],
-      ["Kudos","Cusk, Rachel","read",0,"Lit-Fic","Outline","3",232,2018,"November","",""],
-      ["A Life's Work","Cusk, Rachel","dnf",0,"Non-Fic","","",352,2001,"November","",""],
-      ["Second Place","Cusk, Rachel","read",3,"Lit-Fic","","",480,2021,"","",""],
-      ["No Longer Human","Dazai, Osamu","read",3,"Lit-Fic","","",352,1948,"","",""],
-      ["My Darling Daughter","Delaney, JP","read",3,"Thriller","","",400,2022,"","",""],
-      ["The New Wife","Delaney, JP","read",0,"Thriller","","",320,2023,"November","",""],
-      ["Haunted Ever After","DeLuca, Jen","read",3,"Romance","Boneyard Key","1",272,2024,"","",""],
-      ["Talking at Night","Deverley, Claire","read",0,"Lit-Fic","","",352,2023,"November","",""],
-      ["Common Decency","Dickey, Susannah","read",3,"Lit-Fic","","",249,2022,"","",""],
-      ["Exciting Times","Dolan, Naoise","read",4,"Lit-Fic","","",368,2020,"","",""],
-      ["The Happy Couple","Dolan, Naoise","read",4,"Lit-Fic","","",448,2023,"","",""],
-      ["Teddy","Dulay, Emily","read",3,"Lit-Fic","","",0,2023,"","",""],
-      ["The Wedding People","Espach, Alison","read",4,"Lit-Fic","","",320,2024,"","",""],
-      ["The Virgin Suicides","Eugenides, Jeffrey","read",3,"Lit-Fic","","",400,1993,"","",""],
-      ["Girl, Women, Other","Evaristo, Bernardine","read",3,"Lit-Fic","","",352,2019,"","",""],
-      ["Morbidly Yours","Fairbanks, Ivy","read",3,"Romance","Love in Galway","1",336,2024,"","",""],
-      ["The Favourites","Fargo, Layne","read",5,"Lit-Fic","","",407,2025,"","",""],
-      ["The Nanny","Ferguson, Lana","read",3,"Romance","","",451,2023,"","",""],
-      ["The Guest List","Foley, Lucy","read",3,"Thriller","","",400,2020,"","",""],
-      ["The Hunting Party","Foley, Lucy","read",3,"Thriller","","",336,2019,"","",""],
-      ["The Beginning of Everything","Fraser, Jackie","read",4,"Romance","","",432,2023,"","",""],
-      ["Alchemy of Secrets","Garber, Stephanie","read",4,"Fantasy","Alchemy of Secrets","1",432,2025,"","",""],
-      ["Caraval","Garber, Stephanie","read",4,"Fantasy","Caraval","1",480,2017,"","",""],
-      ["Legendary","Garber, Stephanie","read",4,"Fantasy","Caraval","2",384,2018,"","",""],
-      ["Finale","Garber, Stephanie","read",4,"Fantasy","Caraval","3",448,2019,"","",""],
-      ["Spectacular","Garber, Stephanie","read",4,"Fantasy","Caraval","3.5",400,2024,"","",""],
-      ["Once Upon A Broken Heart","Garber, Stephanie","read",4,"Fantasy","Once Upon A Broken Heart","1",448,2021,"","",""],
-      ["The Ballad of Never After","Garber, Stephanie","read",5,"Fantasy","Once Upon A Broken Heart","2",352,2022,"","",""],
-      ["A Curse For True Love","Garber, Stephanie","read",5,"Fantasy","Once Upon A Broken Heart","3",336,2023,"","",""],
-      ["Lessons in Chemistry","Garmus, Bonnie","read",5,"Historical","","",479,2022,"","",""],
-      ["Late Learner","Geraghty, Ciara","read",4,"Lit-Fic","","",416,2025,"","",""],
-      ["One Dark Window","Gilling, Rachel","read",5,"Fantasy","The Shepherd King","1",385,2022,"","",""],
-      ["Two Twisted Crowns","Gilling, Rachel","read",4,"Fantasy","The Shepherd King","2",464,2023,"","",""],
-      ["The Pumpkin Spice Cafe","Gilmore, Laurie","read",3,"Romance","Dream Harbour","1",440,2023,"","",""],
-      ["Big Bad Wolf","Gilmore, Laurie","read",0,"Romance","(Series)","",367,2026,"October","",""],
-      ["Wild Wicked Mate","Gilmore, Laurie","read",0,"Romance","(Series)","",0,0,"October","",""],
-      ["Icebreaker","Grace, Hannah","read",4,"Romance","Maple Hills","1",448,2022,"","",""],
-      ["Wildfire","Grace, Hannah","read",4,"Romance","Maple Hills","2",480,2023,"","",""],
-      ["Daydream","Grace, Hannah","read",2,"Romance","Maple Hills","3",544,2024,"","",""],
-      ["When All is Said","Griffin, Anne","read",5,"Lit-Fic","","",416,2019,"","",""],
-      ["Shark Heart","Habeck, Emily","read",5,"Lit-Fic","","",0,2023,"","",""],
-      ["The Humans","Haig, Matt","read",0,"Lit-Fic","","",423,2013,"November","",""],
-      ["The Midnight Library","Haig, Matt","read",4,"Lit-Fic","","",288,2020,"","",""],
-      ["Between Sisters","Hannah, Kristin","read",4,"Lit-Fic","","",608,2003,"","",""],
-      ["Summer Island","Hannah, Kristin","read",3,"Lit-Fic","","",416,2001,"","","2026-07-09"],
-      ["The Nightingale","Hannah, Kristin","read",5,"Historical","","",416,2015,"","",""],
-      ["The Women","Hannah, Kristin","read",5,"Historical","","",464,2024,"","",""],
-      ["True Colours","Hannah, Kristin","read",5,"Lit-Fic","","",400,2009,"","",""],
-      ["Winter Garden","Hannah, Kristin","read",5,"Lit-Fic","","",416,2010,"","",""],
-      ["Weyward","Hart, Emilia","read",0,"Fantasy","","",464,2023,"","",""],
-      ["The Go-Between","Hartley, L.P.","read",4,"Classics","","",326,1953,"","",""],
-      ["Orbital","Harvey, Samantha","read",4,"Sci-Fi","","",384,2023,"","",""],
-      ["Magnolia Parks","Hastings, Jessa","read",3,"Lit-Fic","Magnolia Parks Universe","1",368,2021,"","",""],
-      ["Daisy Haites","Hastings, Jessa","read",3,"Lit-Fic","Magnolia Parks Universe","2",400,2021,"","",""],
-      ["Magnolia Parks: Long Way Home","Hastings, Jessa","read",3,"Lit-Fic","Magnolia Parks Universe","3",400,2022,"","",""],
-      ["Daisy Haites: The Great Undoing","Hastings, Jessa","read",3,"Lit-Fic","Magnolia Parks Universe","4",384,2022,"","",""],
-      ["Magnolia Parks: Into The Dark","Hastings, Jessa","read",4,"Lit-Fic","Magnolia Parks Universe","5",328,2024,"","",""],
-      ["Time of Your Life","Hastings, Jessa","read",3,"Lit-Fic","Time of Your Life","1",400,2025,"","",""],
-      ["The Conditions of Will","Hastings, Jessa","read",4,"Lit-Fic","","",432,2025,"","",""],
-      ["Bride","Hazelwood, Ali","read",4,"Romance","Bride","1",400,2024,"","",""],
-      ["Mate","Hazelwood, Ali","read",4,"Romance","Bride","2",256,2025,"","",""],
-      ["Not in Love","Hazelwood, Ali","read",4,"Romance","Not In Love","1",288,2024,"","",""],
-      ["Problematic Summer Romance","Hazelwood, Ali","read",5,"Romance","Not In Love","2",464,2025,"","",""],
-      ["Bound/Unbound","Hazelwood, Ali","read",0,"Romance","","",0,0,"October","",""],
-      ["Deep End","Hazelwood, Ali","read",4,"Romance","","",528,2025,"","",""],
-      ["Loathe to Love You","Hazelwood, Ali","read",3,"Romance","","",352,2023,"","",""],
-      ["Love on the Brain","Hazelwood, Ali","read",3,"Romance","","",448,2022,"","",""],
-      ["Love, Theoretically","Hazelwood, Ali","read",4,"Romance","","",512,2023,"","",""],
-      ["The Love Hypothesis","Hazelwood, Ali","read",4,"Romance","","",560,2021,"","",""],
-      ["Games and Rituals","Heiny, Katherine","read",0,"Short Stories","","",0,2023,"","",""],
-      ["Really Good, Actually","Heisey, Monica","read",4,"Lit-Fic","","",320,2023,"","",""],
-      ["Beach Read","Henry, Emily","read",5,"Romance","","",0,2020,"","",""],
-      ["Book Lovers","Henry, Emily","read",4,"Romance","","",352,2022,"","",""],
-      ["Funny Story","Henry, Emily","read",5,"Romance","","",384,2024,"","",""],
-      ["Happy Place","Henry, Emily","read",5,"Horror","","",352,2023,"","",""],
-      ["The Rats","Herbert, James","read",0,"Lit-Fic","","",384,1974,"","",""],
-      ["The Kiss Quotient","Hoang, Helen","read",3,"Romance","The Kiss Quotient","1",416,2018,"","",""],
-      ["The Bat Tattoo","Hoban, Russell","read",4,"Lit-Fic","","",432,2002,"","",""],
-      ["Heap Earth Upon It","Howarth, Chloe Michelle","read",0,"Lit-Fic","","",368,2025,"October","",""],
-      ["Sunburn","Howarth, Chloe Michelle","read",4,"Lit-Fic","","",400,2023,"","",""],
-      ["Twisted Love","Huang, Ana","read",3,"Romance","Twisted Series","1",128,2021,"","",""],
-      ["Twisted Games","Huang, Ana","read",3,"Romance","Twisted Series","2",384,2021,"","",""],
-      ["Twisted Hate","Huang, Ana","read",4,"Romance","Twisted Series","3",320,2022,"","",""],
-      ["Twisted Lies","Huang, Ana","read",3,"Romance","Twisted Series","4",400,2022,"","",""],
-      ["The Alternatives","Hughes, Caoilinn","read",3,"Lit-Fic","","",368,2024,"","",""],
-      ["Saoirse","Hurtubise, Charleen","read",0,"Lit-Fic","","",0,0,"November","",""],
-      ["Klara and the Sun","Ishiguro, Kazuo","read",0,"Lit-Fic","","",400,2021,"","",""],
-      ["Never Let Me Go","Ishiguro, Kazuo","read",0,"Lit-Fic","","",422,2005,"","",""],
-      ["After I Do","Jenkins Reid, Taylor","read",4,"Lit-Fic","","",334,2014,"","",""],
-      ["Atmosphere","Jenkins Reid, Taylor","read",0,"Lit-Fic","","",528,2025,"","",""],
-      ["Carrie Soto is Back","Jenkins Reid, Taylor","read",0,"Lit-Fic","","",496,2022,"","",""],
-      ["Daisy Jones & The Six","Jenkins Reid, Taylor","read",0,"Lit-Fic","","",496,2019,"","",""],
-      ["Forever, Interrupted","Jenkins Reid, Taylor","read",0,"Lit-Fic","","",360,2013,"","",""],
-      ["Malibu Rising","Jenkins Reid, Taylor","read",0,"Lit-Fic","","",336,2021,"","",""],
-      ["The Seven Husbands of Evelyn Hugo","Jenkins Reid, Taylor","read",0,"Lit-Fic","","",336,2017,"","",""],
-      ["Part of Your Wold","Jimenez, Abby","read",0,"Romance","Part of Your World","1",304,2022,"","",""],
-      ["Yours Truly","Jimenez, Abby","read",0,"Romance","Part of Your World","2",432,2023,"","",""],
-      ["Just For The Summer","Jimenez, Abby","read",0,"Romance","Part of Your World","3",416,2024,"","",""],
-      ["Say You'll Remember Me","Jimenez, Abby","read",0,"Romance","Say You'll Remember Me","1",368,2025,"","",""],
-      ["The Night We Met","Jimenez, Abby","read",0,"Romance","Say You'll Remember Me","2",416,2026,"","",""],
-      ["All Fours","July, Miranda","read",0,"Lit-Fic","","",0,2024,"","",""],
-      ["Love Me Do","Kelk, Lindsey","read",0,"Romance","","",416,2023,"","",""],
-      ["Paradise Logic","Kemp, Sophie","read",0,"Lit-Fic","","",0,2025,"","",""],
-      ["The Chase","Kennedy, Elle","read",0,"Romance","Briar U","1",368,2018,"","",""],
-      ["The Risk","Kennedy, Elle","read",0,"Romance","Briar U","2",400,2019,"","",""],
-      ["The Play","Kennedy, Elle","read",0,"Romance","Briar U","3",422,2019,"","",""],
-      ["The Dare","Kennedy, Elle","read",0,"Romance","Briar U","4",432,2020,"","",""],
-      ["The Deal","Kennedy, Elle","read",0,"Romance","Off-Campus","1",416,2015,"","",""],
-      ["The Mistake","Kennedy, Elle","read",0,"Romance","Off-Campus","2",320,2015,"","",""],
-      ["The Score","Kennedy, Elle","read",0,"Romance","Off-Campus","3",256,2016,"","",""],
-      ["The Goal","Kennedy, Elle","read",0,"Romance","Off-Campus","4",448,2016,"","",""],
-      ["The Legacy","Kennedy, Elle","read",0,"Romance","Off-Campus","5",626,2021,"","",""],
-      ["Body Check","Kennedy, Elle","read",0,"Romance","","",705,2009,"","",""],
-      ["Girl Abroad","Kennedy, Elle","read",0,"Romance","","",768,2024,"","",""],
-      ["Collide","Khabra, Bal","read",0,"Romance","Off The Ice","1",816,2023,"","",""],
-      ["Spiral","Khabra, Bal","read",0,"Romance","Off The Ice","2",544,2025,"","",""],
-      ["Revolve","Khabra, Bal","read",0,"Romance","Off The Ice","3",544,2025,"","",""],
-      ["Embrace","Khabra, Bal","read",0,"Romance","Off The Ice","4",0,2026,"November","",""],
-      ["Cell","King, Stephen","read",0,"Romance","","",496,2006,"","",""],
-      ["The Institute","King, Stephen","read",0,"Thriller","","",384,2019,"","",""],
-      ["Demon Copperhead","Kingsolver, Barbara","read",0,"Lit-Fic","","",448,2022,"","",""],
-      ["The Burnout","Kinsella, Sophie","read",0,"Romance","","",384,2023,"","",""],
-      ["The Poppy War","Kuang, R.F","read",0,"Fantasy","The Poppy War","1",0,2018,"","",""],
-      ["The Dragon Republic","Kuang, R.F","read",4,"Fantasy","The Poppy War","2",617,2019,"","",""],
-      ["The Burning God","Kuang, R.F","read",5,"Fantasy","The Poppy War","3",0,2020,"","",""],
-      ["Babel","Kuang, R.F","read",0,"Fantasy","","",371,2022,"","",""],
-      ["Yellowface","Kuang, R.F","read",0,"Lit-Fic","","",288,2023,"","",""],
-      ["That's All I Know","Levi, Elisa","read",0,"Lit-Fic","","",288,2021,"","",""],
-      ["My Vampire Plus-One","Levine, Jenna","read",0,"Romance","My Vampires","1",320,2024,"","",""],
-      ["My Roommate is a Vampire","Levine, Jenna","read",0,"Romance","My Vampires","2",368,2023,"","",""],
-      ["Vampire Road Trip","Levine, Jenna","read",0,"Romance","My Vampires","3",320,2025,"","",""],
-      ["Rosewater","Little, Liv","read",0,"Lit-Fic","","",352,2023,"","",""],
-      ["We Were Liars","Lockhart, E.","read",0,"Lit-Fic","Liars","1",294,2014,"","",""],
-      ["Assistant To The Villain","Maehrer, Hannah Nicole","read",0,"Fantasy","Assistant To The Villain","1",352,2023,"","",""],
-      ["Apprentice To The Villain","Maehrer, Hannah Nicole","read",0,"Fantasy","Assistant To The Villain","2",336,2024,"","",""],
-      ["Accomplice To The Villain","Maehrer, Hannah Nicole","read",0,"Fantasy","Assistant To The Villain","3",448,2025,"","",""],
-      ["I Have Some Questions","Makkai, Rebecca","read",0,"Thriller","","",320,2023,"","",""],
-      ["Hate Mail","Marchetti, Donna","read",0,"Romance","","",304,2024,"","",""],
-      ["Half His Age","McCurdy, Jennette","read",0,"Lit-Fic","","",334,2026,"","",""],
-      ["I'm Glad My Mom Died","McCurdy, Jennette","read",0,"Non-Fic","","",386,2022,"","",""],
-      ["Dear Debbie","McFadden, Frieda","read",0,"Thriller","","",176,2026,"","",""],
-      ["Do Not Disturb","McFadden, Frieda","read",0,"Thriller","","",256,2021,"","",""],
-      ["The Housemaid","McFadden, Frieda","read",0,"Thriller","","",336,2022,"","",""],
-      ["The Intruder","McFadden, Frieda","read",0,"Thriller","","",448,2025,"","",""],
-      ["The Surrogate Mother","McFadden, Frieda","read",2,"Thriller","","",416,2025,"","",""],
-      ["The Tenant","McFadden, Frieda","read",0,"Thriller","","",304,2025,"","",""],
-      ["Ward D","McFadden, Frieda","read",0,"Thriller","","",352,2023,"November","",""],
-      ["Fun and Games","McHugh, John Patrick","read",0,"Lit-Fic","","",304,2025,"","",""],
-      ["Evenings and Weekends","McKenna, Oisin","read",0,"Lit-Fic","","",400,2024,"","",""],
-      ["Oh My God, What a Complete Aisling","McLyssaght, Emer & Breen, Sarah","read",0,"Lit-Fic","Oh My God, What a Complete Aisling","1",384,2017,"","",""],
-      ["The Importance of Being Aisling","McLyssaght, Emer & Breen, Sarah","read",0,"Lit-Fic","Oh My God, What a Complete Aisling","2",336,2018,"","",""],
-      ["Once, Twice, Three Times an Aisling","McLyssaght, Emer & Breen, Sarah","read",0,"Lit-Fic","Oh My God, What a Complete Aisling","3",400,2019,"","",""],
-      ["Aisling and the City","McLyssaght, Emer & Breen, Sarah","read",0,"Lit-Fic","Oh My God, What a Complete Aisling","4",336,2021,"","",""],
-      ["Aisling Ever After","McLyssaght, Emer & Breen, Sarah","read",0,"Lit-Fic","Oh My God, What a Complete Aisling","5",320,2023,"","",""],
-      ["Mother Mother","McManus, Annie","read",0,"Lit-Fic","","",448,2021,"","",""],
-      ["Mountain Wood","Michaels, Briana","read",0,"Romance","","",352,2025,"","",""],
-      ["All The Lovers In The Night","Mieko Kawakami","read",0,"Lit-Fic","","",288,2011,"","",""],
-      ["Circe","Miller, Madeline","read",0,"Historical","","",274,2018,"","",""],
-      ["Ten Things We Shouldn't Have Done","Mlynowski, Sarah","read",0,"Lit-Fic","","",304,2011,"","",""],
-      ["Looking Out For Love","Money-Coutts, Sophia","read",0,"Romance","","",352,2023,"","",""],
-      ["Lapvona","Moshfegh, Ottessa","read",0,"Historical","","",368,2022,"","",""],
-      ["My Year of Rest and Relaxation","Moshfegh, Ottessa","read",0,"Lit-Fic","","",304,2018,"","",""],
-      ["Colorless Tsykuru Tazaki and His Years of Pilgrimage","Murakami, Haruki","read",0,"Lit-Fic","","",400,2013,"","",""],
-      ["Norweigan Wood","Murakami, Haruki","read",0,"Lit-Fic","","",0,1987,"","",""],
-      ["The City and Its Uncertain Walls","Murakami, Haruki","read",0,"Fantasy","","",288,2023,"","",""],
-      ["Convenience Store Woman","Murata, Sayaka","read",0,"Lit-Fic","","",368,2016,"","",""],
-      ["Earthlings","Murata, Sayaka","read",0,"Lit-Fic","","",336,2018,"","",""],
-      ["The Coast Road","Murrin, Alan","read",0,"Lit-Fic","","",0,2024,"","",""],
-      ["Hello Beautiful","Napolitano, Ann","read",0,"Lit-Fic","","",368,2023,"","",""],
-      ["Snowflake","Nealon, Louise","read",0,"Lit-Fic","","",432,2021,"","",""],
-      ["Open Water","Nelson, Caleb Azumani","read",0,"Lit-Fic","","",368,2021,"","",""],
-      ["Us","Nicholls, David","read",0,"Lit-Fic","","",480,2014,"","",""],
-      ["Ordinary Human Failings","Nolan, Megan","read",0,"Lit-Fic","","",0,2023,"","",""],
-      ["Frankie","Norton, Graham","read",0,"Lit-Fic","","",352,2024,"","",""],
-      ["No Hard Feelings","Novak, Genevieve","read",0,"Lit-Fic","","",480,2022,"","",""],
-      ["Scenes of a Graphic Nature","O'Donoghue, Caroline","read",0,"Lit-Fic","","",400,2020,"","",""],
-      ["The Rachel Incident","O'Donoghue, Caroline","read",0,"Lit-Fic","","",432,2023,"","",""],
-      ["This Must Be The Place","O'Farrell, Maggie","read",0,"Lit-Fic","","",464,2016,"","",""],
-      ["Thirst Tarp","O'Hare, Grainne","read",0,"Lit-Fic","","",0,2024,"","",""],
-      ["Swept Away","O'Leary, Beth","read",0,"Romance","","",448,2025,"","",""],
-      ["The Flatshare","O'Leary, Beth","read",0,"Romance","","",480,2019,"","",""],
-      ["The Switch","O'Leary, Beth","read",0,"Romance","","",398,2020,"","",""],
-      ["Idol","O'Neill, Louise","read",0,"Thriller","","",432,2022,"","",""],
-      ["Fake Skating","Painter, Lynn","read",0,"Romance","","",464,2025,"","",""],
-      ["Main Characters","Palmer, Bobby","read",0,"Lit-Fic","","",0,2026,"","",""],
-      ["This Is How You Remember It","Prasitka, Catherine","read",0,"Lit-Fic","","",464,2024,"","",""],
-      ["Till Summer Do Us Part","Quinn, Meghan","read",0,"Romance","","",0,2025,"","",""],
-      ["Everything's Fine","Rabess, Cecilia","read",0,"Lit-Fic","","",208,2023,"","",""],
-      ["The Compound","Rawle, Aisling","read",0,"Lit-Fic","","",224,2025,"","",""],
-      ["The Layover","Reekles, Beth","read",0,"Romance","","",771,2025,"","",""],
-      ["Greta & Valdin","Reilly, Rebecca K","read",0,"Lit-Fic","","",0,2021,"","",""],
-      ["If We Were Villains","Rio, M.L","read",5,"Lit-Fic","","",559,2017,"October","",""],
-      ["Haunt Your Heart Out","Roberts, Amber","read",0,"Romance","","",304,2024,"","",""],
-      ["Powerless","Roberts, Lauren","read",0,"Fantasy","Powerless","1",368,2023,"","",""],
-      ["Powerful","Roberts, Lauren","read",0,"Fantasy","Powerless","1.5",304,2024,"","",""],
-      ["Reckless","Roberts, Lauren","read",0,"Fantasy","Powerless","2",262,2024,"","",""],
-      ["Fearless","Roberts, Lauren","read",0,"Fantasy","Powerless","3",603,2025,"","",""],
-      ["Fearful","Roberts, Lauren","read",0,"Fantasy","Powerless","3.5",464,2025,"","",""],
-      ["The Secret Bookclub","Robinson, Shauna","read",0,"Lit-Fic","","",464,2024,"","",""],
-      ["Intermezzo","Rooney, Sally","read",0,"Lit-Fic","","",416,2024,"","",""],
-      ["The Lamb","Rose, Lucy","read",0,"Horror","","",0,0,"","",""],
-      ["Divine Rivals","Ross, Rebecca","read",0,"Fantasy","Letters of Enchantment","1",240,2023,"","",""],
-      ["Rutless Vows","Ross, Rebecca","read",0,"Fantasy","Letters of Enchantment","2",513,2023,"","",""],
-      ["Holding Her Breath","Ryan, Eimear","read",0,"Lit-Fic","","",288,2021,"","",""],
-      ["Vicious","Schwab, V.E","read",0,"Fantasy","Villains","1",352,2013,"","",""],
-      ["Vengeful","Schwab, V.E","read",0,"Fantasy","Villains","2",416,2018,"","",""],
-      ["Expiration Dates","Serle, Rebecca","read",0,"Lit-Fic","","",0,2024,"November","",""],
-      ["Honour","Shafak, Elif","read",0,"Lit-Fic","","",416,2012,"","",""],
-      ["It Could Never Happen Here","Shortall, Eithne","read",0,"Lit-Fic","","",356,2022,"","",""],
-      ["Flawless","Silver, Elsie","read",0,"Romance","Chestnut Springs","1",384,2022,"","",""],
-      ["Heartless","Silver, Elsie","read",0,"Romance","Chestnut Springs","2",416,2023,"","",""],
-      ["Powerless","Silver, Elsie","read",0,"Romance","Chestnut Springs","3",814,2023,"","",""],
-      ["Reckless","Silver, Elsie","read",0,"Romance","Chestnut Springs","4",576,2023,"","",""],
-      ["Hopeless","Silver, Elsie","read",0,"Romance","Chestnut Springs","5",320,2023,"","",""],
-      ["Off to the Races","Silver, Elsie","read",0,"Romance","Gold Rush Ranch","1",1040,2021,"","",""],
-      ["A Photo Finish","Silver, Elsie","read",0,"Romance","Gold Rush Ranch","2",416,2021,"","",""],
-      ["The Front Runner","Silver, Elsie","read",0,"Romance","Gold Rush Ranch","3",320,2021,"","",""],
-      ["A False Start","Silver, Elsie","read",0,"Romance","Gold Rush Ranch","4",592,2022,"","",""],
-      ["The Accidental","Smith, Ali","read",0,"Lit-Fic","","",0,2005,"","",""],
-      ["N-W","Smith, Zadie","read",0,"Lit-Fic","","",352,2012,"","",""],
-      ["White Teeth","Smith, Zadie","read",4,"Historical","","",542,2000,"","",""],
-      ["My Name is Lucy Barton","Strout, Elizabeth","read",0,"Lit-Fic","","",208,2016,"","",""],
-      ["Breakdown","Sweeney, Cathy","read",0,"Lit-Fic","","",224,2024,"","",""],
-      ["The Goldfinch","Tartt, Donna","read",0,"Lit-Fic","","",176,2013,"","",""],
-      ["The Secret History","Tartt, Donna","read",0,"Lit-Fic","","",559,1992,"","",""],
-      ["Margo's Got Money Troubles","Thorpe, Rufi","read",0,"Lit-Fic","","",304,2024,"","",""],
-      ["This Place is Still Beautiful","Tian, Xixi","read",0,"Lit-Fic","","",368,2022,"","",""],
-      ["Long Island","Toibin, Colm","read",0,"Historical","Eilis Lacey","1",304,2024,"","",""],
-      ["Brooklyn","Toibin, Colm","read",0,"Historical","Eilis Lacey","2",262,2009,"","",""],
-      ["Mile High","Tomforde, Liz","read",0,"Romance","Windy City","1",603,2022,"","",""],
-      ["The Right Move","Tomforde, Liz","read",0,"Romance","Windy City","2",464,2023,"","",""],
-      ["Caught Up","Tomforde, Liz","read",0,"Romance","Windy City","3",464,2023,"","",""],
-      ["Play Along","Tomforde, Liz","read",0,"Romance","Windy City","4",384,2024,"","",""],
-      ["Rewind It Back","Tomforde, Liz","read",0,"Romance","Windy City","5",432,2025,"","",""],
-      ["In Her Own League","Tomforde, Liz","read",0,"Romance","Windy City","6",416,2026,"","",""],
-      ["Strange Houses","Uketsu","read",0,"Horror","","",208,2021,"","",""],
-      ["Strange Pictures","Uketsu","read",0,"Horror","","",240,2022,"","",""],
-      ["Slags","Unsworth, Emma Jane","read",0,"Lit-Fic","","",288,2025,"","",""],
-      ["The Safekeep","Van Der Wouden, Yael","read",0,"Historical","","",288,2024,"","",""],
-      ["On Earth We're Briefly Gorgeous","Vuong, Ocean","read",0,"Lit-Fic","","",256,2019,"","",""],
-      ["The Village Library Demon-Hunting Society","Waggoner, C.M","read",0,"Thriller","","",352,2024,"","",""],
-      ["Kala","Walsh, Colm","read",0,"Thriller","","",416,2023,"","",""],
-      ["The Summer of Broken Rules","Walther, K.L","read",0,"Romance","","",384,2021,"","",""],
-      ["The Sheep Stell","White, Janet","read",0,"Non-Fic","","",288,1992,"","",""],
-      ["The Snag List","White, Sophie","read",0,"Lit-Fic","","",416,2022,"","",""],
-      ["Under A Dancing Star","Wood, Laura","read",0,"Romance","","",356,2019,"","",""],
-      ["Rewitched","Wood, Lucy Jane","read",0,"Fantasy","Rewitched","1",384,2024,"October","",""],
-      ["Uncharmed","Wood, Lucy Jane","read",0,"Fantasy","Rewitched","2",0,2025,"October","",""],
-      ["Nightshade","Woods, Autumn","read",0,"Romance","Sorrowsong University","1",416,2025,"October","",""],
-      ["Daybreak","Woods, Autumn","read",0,"Romance","Sorrowsong University","2",0,2026,"October","",""],
-      ["Kitten","Yu, Stacey","read",0,"Lit-Fic","","",288,2026,"","",""],
-      ["Tomorrow and Tomorrow and Tomorrow","Zevin, Gabrielle","read",0,"Romance","","",416,2022,"September","",""],
-      ["Julie Chan is Dead","Zhang, Liang","read",0,"Thriller","","",320,2025,"","",""],
-      ["Consider Me","Mack, Becka","dnf",0,"Romance","Playing For Keeps","1",344,2022,"","Z DNF",""],
-      ["Play With Me","Mack, Becka","dnf",0,"Romance","Playing For Keeps","2",302,2022,"","Z DNF",""],
-      ["Unravel Me","Mack, Becka","dnf",0,"Romance","Playing For Keeps","3",224,2023,"","Z DNF",""],
-      ["Fall With Me","Mack, Becka","dnf",0,"Romance","Playing For Keeps","4",393,2024,"","Z DNF",""],
-      ["Lights Out","Allen, Navessa","tbr",0,"Romance","(Series)","",0,0,"2027","Z Series Incomplete",""],
-      ["Love Unwritten","Asher, Lauren","tbr",0,"Romance","Lakefront Billionaires","2",624,2024,"2027","Z Series Incomplete",""],
-      ["Fangirl Down","Bailey, Tessa","tbr",0,"Romance","Big Shots","1",384,2024,"2027","Z Series Incomplete",""],
-      ["The Au Pair Affair","Bailey, Tessa","tbr",0,"Romance","Big Shots","2",384,2024,"2027","Z Series Incomplete",""],
-      ["The Atlas Six","Blake, Olivia","tbr",0,"Fantasy","The Atlas","1",352,2020,"2027","Z Series Incomplete",""],
-      ["Water","Boyne, John","tbr",0,"Lit-Fic","The Elements","1",176,2023,"2027","Z Series Incomplete",""],
-      ["Earth","Boyne, John","tbr",0,"Lit-Fic","The Elements","2",176,2024,"2027","Z Series Incomplete",""],
-      ["The House Witch and the Enchanting of the Hearth","Delemhach","tbr",0,"Fantasy","The House Witch","1",256,2022,"2027","Z Series Incomplete",""],
-      ["Bully","Douglas, Penelope","tbr",0,"Romance","Fall Away","1",432,2013,"2027","Z Series Incomplete",""],
-      ["King of Sloth","Huang, Ana","tbr",0,"Romance","Kings of Sin","4",72,2024,"2027","Z Series Incomplete",""],
-      ["King of Envy","Huang, Ana","tbr",0,"Romance","Kings of Sin","5",224,2025,"2027","Z Series Incomplete",""],
-      ["Kafka","Kafka, Franz","tbr",0,"Short Stories","","",576,1993,"2027","Z Series Incomplete",""],
-      ["Antartica","Keegan, Claire","tbr",0,"Short Stories","","",224,1999,"2027","Z Series Incomplete",""],
-      ["House of Earth and Blood","Maas, Sarah J.","tbr",0,"Fantasy","Crescent City","1",352,2020,"2027","Z Series Incomplete",""],
-      ["Blind Willow, Sleeping Woman","Murakami, Haruki","tbr",0,"Short Stories","","",240,2006,"2027","Z Series Incomplete",""],
-      ["Life Ceremony","Murata, Sayaka","tbr",0,"Short Stories","","",448,2019,"2027","Z Series Incomplete",""],
-      ["Swift and Saddled","Sage, Lyla","tbr",0,"Romance","Rebel Blue Ranch","2",0,2024,"2027","Z Series Incomplete",""],
-      ["Done and Dusted","Sage, Lyla","tbr",0,"Romance","Rebel Blue Ranch","1",256,2023,"2027","Z Series Incomplete",""],
-      ["this happy","Campbell, Niamh","tbr",0,"Lit-Fic","","",0,0,"2027","Medium",""],
-      ["Another Life","Hannah, Kristin","tbr",0,"Lit-Fic","","",0,0,"2027","Medium",""],
-      ["The No-Show","O'Leary, Beth","tbr",0,"Romance","","",0,0,"2027","Medium",""],
-      ["People We Meet on Vacation","Henry, Emily","read",0,"Romance","","",0,0,"","",""],
-      ["Started For Ten","Nicholls, David","tbr",0,"Lit-Fic","","",0,0,"2027","Medium",""],
-      ["Out of the Blue","June, Jason","tbr",0,"Romance","","",0,0,"2027","Medium",""]
-    ];
-
-    function formatAuthor(raw) {
-      if (!raw) return "";
-      return raw.split("&").map(part => {
-        const p = part.trim();
-        if (!p.includes(",")) return p;
-        const [last, ...rest] = p.split(",");
-        return `${rest.join(",").trim()} ${last.trim()}`.trim();
-      }).join(" & ");
-    }
-
-    function extractSurname(rawOrDisplayAuthor) {
-      const s = String(rawOrDisplayAuthor || "").trim();
-      if (!s) return "";
-      const firstAuthor = s.split("&")[0].trim();
-      if (firstAuthor.includes(",")) {
-        return firstAuthor.split(",")[0].trim().toLowerCase();
-      }
-      const parts = firstAuthor.split(/\s+/);
-      return (parts[parts.length - 1] || firstAuthor).toLowerCase();
-    }
-
-    const SHEET_SURNAME_MAP = {};
-    SHEET_ROWS.forEach(r => {
-      const key = `${r[0].toLowerCase()}||${formatAuthor(r[1]).toLowerCase()}`;
-      SHEET_SURNAME_MAP[key] = extractSurname(r[1]);
-    });
-
-    function getAuthorSort(book) {
-      if (book.authorSort) return book.authorSort;
-      const key = `${(book.title || "").toLowerCase()}||${(book.author || "").toLowerCase()}`;
-      return SHEET_SURNAME_MAP[key] || extractSurname(book.author);
-    }
-
-    function snapQuarter(val) {
-      const n = parseFloat(val);
-      if (isNaN(n) || n <= 0) return 0;
-      return Math.min(5, Math.round(n * 4) / 4);
-    }
-
-    function formatRatingNumber(val) {
-      const q = snapQuarter(val);
-      return q ? String(q) : "0";
-    }
-
-    function buildInitialBooks() {
-      return SHEET_ROWS.map((r, idx) => ({
-        id: `sheet-${idx + 2}`,
-        title: r[0],
-        author: formatAuthor(r[1]),
-        authorSort: extractSurname(r[1]),
-        format: "physical",
-        status: r[2],
-        rating: r[3] || 0,
-        genre: r[4] || "",
-        seriesName: r[5] === "(Series)" ? "Series" : (r[5] || ""),
-        seriesNo: r[6] || "",
-        pages: r[7] || 0,
-        pubYear: r[8] || 0,
-        month: r[9] || "",
-        priority: r[10] || "",
-        startedOn: r[11] || "",
-        dateRead: "",
-        releaseDate: "",
-        coverUrl: "",
-        notes: ""
-      }));
-    }
-
-    let books = loadBooks();
+    let storageAvailable = checkLocalStorage();
+    let books = loadBooksSync();
     let activeShelf = "physical";
     let activeStatus = "all";
     let currentRating = 0;
@@ -1859,6 +1253,7 @@
     const filterToggleBtn = document.getElementById("filterToggleBtn");
     const resultsCount = document.getElementById("resultsCount");
     const coversCount = document.getElementById("coversCount");
+    const storageStatusText = document.getElementById("storageStatusText");
 
     const bookModal = document.getElementById("bookModal");
     const bookForm = document.getElementById("bookForm");
@@ -1891,31 +1286,166 @@
     const notesInput = document.getElementById("notesInput");
     const deleteBookBtn = document.getElementById("deleteBookBtn");
 
-    function loadBooks() {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw === null) {
-        const initial = buildInitialBooks();
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
-        return initial;
-      }
+    function checkLocalStorage() {
       try {
-        const parsed = JSON.parse(raw) || [];
-        return parsed.map(b => ({
-          ...b,
-          format: b.format || "physical",
-          authorSort: getAuthorSort(b),
-          rating: snapQuarter(b.rating)
-        }));
+        const test = "__rl_test__";
+        localStorage.setItem(test, "1");
+        localStorage.removeItem(test);
+        return true;
       } catch {
-        return [];
+        return false;
+      }
+    }
+
+    // IndexedDB backup mirror (resists localStorage clears & handles large cover sets)
+    function openIdb() {
+      return new Promise((resolve, reject) => {
+        if (!window.indexedDB) return reject(new Error("No IndexedDB"));
+        const req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = () => {
+          const db = req.result;
+          if (!db.objectStoreNames.contains(IDB_STORE)) db.createObjectStore(IDB_STORE);
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    async function idbSet(key, val) {
+      try {
+        const db = await openIdb();
+        await new Promise((resolve, reject) => {
+          const tx = db.transaction(IDB_STORE, "readwrite");
+          tx.objectStore(IDB_STORE).put(val, key);
+          tx.oncomplete = () => resolve();
+          tx.onerror = () => reject(tx.error);
+        });
+      } catch {}
+    }
+
+    async function idbGet(key) {
+      try {
+        const db = await openIdb();
+        return await new Promise((resolve, reject) => {
+          const tx = db.transaction(IDB_STORE, "readonly");
+          const req = tx.objectStore(IDB_STORE).get(key);
+          req.onsuccess = () => resolve(req.result);
+          req.onerror = () => reject(req.error);
+        });
+      } catch {
+        return null;
+      }
+    }
+
+    function formatAuthor(raw) {
+      if (!raw) return "";
+      return raw.split("&").map(part => {
+        const p = part.trim();
+        if (!p.includes(",")) return p;
+        const [last, ...rest] = p.split(",");
+        return `${rest.join(",").trim()} ${last.trim()}`.trim();
+      }).join(" & ");
+    }
+
+    function extractSurname(rawOrDisplayAuthor) {
+      const s = String(rawOrDisplayAuthor || "").trim();
+      if (!s) return "";
+      const firstAuthor = s.split("&")[0].trim();
+      if (firstAuthor.includes(",")) {
+        return firstAuthor.split(",")[0].trim().toLowerCase();
+      }
+      const parts = firstAuthor.split(/\s+/);
+      return (parts[parts.length - 1] || firstAuthor).toLowerCase();
+    }
+
+    function snapQuarter(val) {
+      const n = parseFloat(val);
+      if (isNaN(n) || n <= 0) return 0;
+      return Math.min(5, Math.round(n * 4) / 4);
+    }
+
+    function normalizeBook(b) {
+      return {
+        ...b,
+        format: b.format || "physical",
+        authorSort: b.authorSort || extractSurname(b.author),
+        rating: snapQuarter(b.rating)
+      };
+    }
+
+    function loadBooksSync() {
+      // 1. Check embedded snapshot (when opened from an exported .html)
+      try {
+        const embeddedRaw = document.getElementById("embeddedBooksData").textContent.trim();
+        if (embeddedRaw) {
+          const embedded = JSON.parse(embeddedRaw);
+          if (Array.isArray(embedded) && embedded.length > 0 && !localStorage.getItem(STORAGE_KEY)) {
+            const norm = embedded.map(normalizeBook);
+            if (storageAvailable) localStorage.setItem(STORAGE_KEY, JSON.stringify(norm));
+            return norm;
+          }
+        }
+      } catch {}
+
+      // 2. Check current or legacy localStorage keys
+      if (storageAvailable) {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw !== null) {
+          try { return (JSON.parse(raw) || []).map(normalizeBook); } catch {}
+        }
+        for (const oldKey of LEGACY_KEYS) {
+          const oldRaw = localStorage.getItem(oldKey);
+          if (oldRaw) {
+            try {
+              const migrated = (JSON.parse(oldRaw) || []).map(normalizeBook);
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+              return migrated;
+            } catch {}
+          }
+        }
+      }
+      return [];
+    }
+
+    function updateStorageBanner(msg, isWarning = false) {
+      storageStatusText.textContent = msg;
+      document.getElementById("storageWarning").classList.toggle("active", isWarning);
+    }
+
+    async function hydrateFromIdbIfNeeded() {
+      if (!storageAvailable) {
+        updateStorageBanner("Storage blocked (Export to save)", true);
+      } else {
+        updateStorageBanner("Saved locally");
+      }
+
+      if (books.length === 0) {
+        const idbBooks = await idbGet(STORAGE_KEY);
+        if (Array.isArray(idbBooks) && idbBooks.length > 0) {
+          books = idbBooks.map(normalizeBook);
+          if (storageAvailable) {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(books)); } catch {}
+          }
+          renderBooks();
+          updateStorageBanner("Restored from IndexedDB");
+        }
+      } else {
+        idbSet(STORAGE_KEY, books);
       }
     }
 
     function saveBooks() {
+      idbSet(STORAGE_KEY, books);
+      if (!storageAvailable) {
+        updateStorageBanner("Storage blocked (Export to save)", true);
+        return;
+      }
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
+        const time = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        updateStorageBanner(`Saved · ${time}`, false);
       } catch {
-        alert("Storage limit reached! Try using cover URLs instead of uploading large photos.");
+        updateStorageBanner("Saved to IndexedDB (localStorage full)", false);
       }
     }
 
@@ -1989,7 +1519,9 @@
       const fetchBtn = document.getElementById("fetchCoversBtn");
       const missing = shelfBooks.length - withCovers;
       if (!isFetchingCovers) {
-        fetchBtn.textContent = missing > 0 ? `Fetch Covers (${missing})` : "Covers Ready";
+        fetchBtn.textContent = shelfBooks.length === 0
+          ? "Fetch Covers"
+          : (missing > 0 ? `Fetch Covers (${missing})` : "Covers Ready");
       }
     }
 
@@ -2043,8 +1575,8 @@
 
       list.sort((a, b) => {
         if (sort === "authorSurname") {
-          const sa = getAuthorSort(a);
-          const sb = getAuthorSort(b);
+          const sa = a.authorSort || extractSurname(a.author);
+          const sb = b.authorSort || extractSurname(b.author);
           const cmpSurname = sa.localeCompare(sb);
           if (cmpSurname !== 0) return cmpSurname;
 
@@ -2089,7 +1621,6 @@
       return list;
     }
 
-    // SVG Star Renderer (supports 0, 0.25, 0.5, 0.75, 1.0 per star)
     const STAR_PATH = "M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.56l-6.18 3.25L7 13.93 2 9.06l6.91-1z";
 
     function starFillAttr(fraction) {
@@ -2109,8 +1640,7 @@
       if (!r) return `<span class="date-line">Not rated</span>`;
       let svgs = "";
       for (let i = 1; i <= 5; i++) {
-        const frac = Math.max(0, Math.min(1, r - (i - 1)));
-        svgs += renderStarSvg(frac);
+        svgs += renderStarSvg(Math.max(0, Math.min(1, r - (i - 1))));
       }
       return `<div class="stars-row" aria-label="${r} out of 5 stars"><div class="stars-svg-wrap">${svgs}</div><span class="rating-num">${r}</span></div>`;
     }
@@ -2123,13 +1653,21 @@
       resultsCount.textContent = `Showing ${filtered.length} of ${shelfBooks.length} books`;
 
       if (filtered.length === 0) {
-        const emptyTitle = activeShelf === "digital" && shelfBooks.length === 0
-          ? "Your Digital Shelf is empty"
-          : "No books match those filters";
-        const emptyMsg = activeShelf === "digital" && shelfBooks.length === 0
-          ? "Tap <strong>+ Add Book</strong> or <strong>Import</strong> a CSV to add your digital books."
-          : "Try resetting your filters or tap <strong>+ Add Book</strong>.";
-        bookGrid.innerHTML = `<div class="empty-state"><h3>${emptyTitle}</h3><p>${emptyMsg}</p></div>`;
+        const isShelfEmpty = shelfBooks.length === 0;
+        const shelfLabel = activeShelf === "digital" ? "Digital" : (activeShelf === "physical" ? "Physical" : "");
+        bookGrid.innerHTML = isShelfEmpty
+          ? `<div class="empty-state">
+               <h3>No ${shelfLabel ? `${shelfLabel} ` : ""}books yet</h3>
+               <p>Upload your spreadsheet (.csv), restore a .json backup, or tap <strong>+ Add Book</strong>.</p>
+               <div class="empty-actions">
+                 <button type="button" class="btn-primary" style="flex:0 0 auto;padding:10px 18px;" onclick="openImportModal()">Import CSV / JSON</button>
+                 <button type="button" class="btn-secondary" style="padding:10px 16px;" onclick="openBookModal(null)">+ Add Book</button>
+               </div>
+             </div>`
+          : `<div class="empty-state">
+               <h3>No books match those filters</h3>
+               <p>Try resetting your filters or searching something else.</p>
+             </div>`;
         return;
       }
 
@@ -2203,7 +1741,7 @@
       }).join("");
     }
 
-    // Automatic Cover Fetcher
+    // Automatic Cover Fetcher (Open Library + Google Books fallback)
     async function findCoverForBook(book) {
       const cleanTitle = book.title.replace(/\(.*?\)/g, "").trim();
       const cleanAuthor = book.author === "Anonymous" ? "" : book.author.split("&")[0].trim();
@@ -2214,9 +1752,7 @@
         if (res.ok) {
           const data = await res.json();
           const hit = (data.docs || []).find(d => d.cover_i);
-          if (hit && hit.cover_i) {
-            return `https://covers.openlibrary.org/b/id/${hit.cover_i}-M.jpg`;
-          }
+          if (hit && hit.cover_i) return `https://covers.openlibrary.org/b/id/${hit.cover_i}-M.jpg`;
         }
       } catch {}
 
@@ -2234,11 +1770,11 @@
       return "";
     }
 
-    document.getElementById("fetchCoversBtn").addEventListener("click", async () => {
+    async function fetchMissingCovers() {
       if (isFetchingCovers) return;
       const missing = getShelfBooks().filter(b => !b.coverUrl);
       if (missing.length === 0) {
-        alert("All books on this shelf already have covers!");
+        alert("No books missing covers on this shelf!");
         return;
       }
 
@@ -2270,11 +1806,10 @@
       banner.classList.remove("active");
       saveBooks();
       renderBooks();
-    });
+    }
 
-    document.getElementById("stopFetchBtn").addEventListener("click", () => {
-      abortCoverFetch = true;
-    });
+    document.getElementById("fetchCoversBtn").addEventListener("click", fetchMissingCovers);
+    document.getElementById("stopFetchBtn").addEventListener("click", () => { abortCoverFetch = true; });
 
     // Shelf Switcher (Physical / Digital / All)
     document.getElementById("shelfSwitcher").addEventListener("click", (e) => {
@@ -2329,7 +1864,7 @@
       });
     });
 
-    // Book Modal & Quarter-Star Picker Logic
+    // Book Modal & Quarter-Star Picker
     function syncStatusFields() {
       const st = statusInput.value;
       dateReadGroup.classList.toggle("hidden", st !== "read");
@@ -2448,12 +1983,11 @@
       const id = bookIdInput.value || `book-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
       const status = statusInput.value;
       const rawAuthor = authorInput.value.trim();
-      const displayAuthor = formatAuthor(rawAuthor);
 
       const entry = {
         id,
         title: titleInput.value.trim(),
-        author: displayAuthor,
+        author: formatAuthor(rawAuthor),
         authorSort: extractSurname(rawAuthor),
         format: formatInput.value,
         status,
@@ -2543,16 +2077,17 @@
       if (e.key === "Enter") { e.preventDefault(); searchOpenLibrary(); }
     });
 
-    // CSV Parser & Smart Importer (keeps existing books!)
+    // CSV Parser & Smart Importer
     function parseCsvText(text) {
+      const cleanText = text.replace(/^\uFEFF/, ""); // strip UTF-8 BOM if present
       const rows = [];
       let row = [];
       let field = "";
       let inQuotes = false;
 
-      for (let i = 0; i < text.length; i++) {
-        const ch = text[i];
-        const next = text[i + 1];
+      for (let i = 0; i < cleanText.length; i++) {
+        const ch = cleanText[i];
+        const next = cleanText[i + 1];
 
         if (inQuotes) {
           if (ch === '"' && next === '"') {
@@ -2626,6 +2161,11 @@
       return "";
     }
 
+    function parsePagesCell(raw) {
+      const match = String(raw || "").trim().match(/^(\d+)/);
+      return match ? parseInt(match[1], 10) : 0;
+    }
+
     function csvRowsToBooks(rows, defaultFormat) {
       if (rows.length < 2) return [];
       const headers = rows[0].map(h => h.toLowerCase().trim());
@@ -2643,7 +2183,8 @@
       const iPriority = col("priority");
       const iStatus = col("status");
       const iGenre = col("genre");
-      const iSeriesName = col("series name", "series");
+      const iSeriesFlag = col("series");
+      const iSeriesName = col("series name");
       const iSeriesNo = col("series no", "series #", "series number", "book #");
       const iPages = col("pages", "page count");
       const iStarted = col("started on", "start date");
@@ -2666,10 +2207,16 @@
           ? "digital"
           : (rawFmt.includes("physical") ? "physical" : defaultFormat);
 
-        const pagesNum = iPages > -1 ? parseInt(r[iPages], 10) : 0;
         const pubNum = iPubYear > -1 ? parseInt(r[iPubYear], 10) : 0;
         let sName = iSeriesName > -1 ? (r[iSeriesName] || "").trim() : "";
-        if (sName.toLowerCase() === "yes" || sName.toLowerCase() === "no") sName = "";
+        const sFlag = iSeriesFlag > -1 ? (r[iSeriesFlag] || "").trim().toLowerCase() : "";
+        if (!sName && iSeriesFlag > -1 && sFlag && sFlag !== "yes" && sFlag !== "no") {
+          sName = r[iSeriesFlag].trim();
+        } else if (!sName && sFlag === "yes") {
+          sName = "Series";
+        }
+
+        const prioRaw = iPriority > -1 ? (r[iPriority] || "").trim() : "";
 
         return {
           id: `csv-${Date.now()}-${idx}-${Math.random().toString(36).slice(2, 5)}`,
@@ -2682,10 +2229,10 @@
           genre: iGenre > -1 ? (r[iGenre] || "").trim() : "",
           seriesName: sName,
           seriesNo: iSeriesNo > -1 ? (r[iSeriesNo] || "").trim() : "",
-          pages: isNaN(pagesNum) ? 0 : pagesNum,
+          pages: iPages > -1 ? parsePagesCell(r[iPages]) : 0,
           pubYear: isNaN(pubNum) ? 0 : pubNum,
           month: iMonth > -1 ? (r[iMonth] || "").trim() : "",
-          priority: iPriority > -1 && r[iPriority] !== "N/A" ? (r[iPriority] || "").trim() : "",
+          priority: prioRaw === "N/A" ? "" : prioRaw,
           startedOn: iStarted > -1 ? normalizeImportedDate(r[iStarted]) : "",
           dateRead: iFinished > -1 ? normalizeImportedDate(r[iFinished]) : "",
           releaseDate: iRelease > -1 ? normalizeImportedDate(r[iRelease]) : "",
@@ -2695,11 +2242,13 @@
       }).filter(Boolean);
     }
 
-    document.getElementById("importModalBtn").addEventListener("click", () => {
+    function openImportModal() {
       document.getElementById("importShelfSelect").value = activeShelf === "digital" ? "digital" : "physical";
       document.getElementById("importFileInput").value = "";
       document.getElementById("importModal").classList.add("open");
-    });
+    }
+
+    document.getElementById("importModalBtn").addEventListener("click", openImportModal);
 
     document.getElementById("importFileInput").addEventListener("change", (e) => {
       const file = e.target.files[0];
@@ -2716,12 +2265,7 @@
           if (file.name.toLowerCase().endsWith(".json")) {
             const parsed = JSON.parse(content);
             if (!Array.isArray(parsed)) throw new Error("Invalid JSON");
-            incoming = parsed.map(b => ({
-              ...b,
-              format: b.format || defaultShelf,
-              authorSort: getAuthorSort(b),
-              rating: snapQuarter(b.rating)
-            }));
+            incoming = parsed.map(b => normalizeBook({ ...b, format: b.format || defaultShelf }));
           } else {
             const rows = parseCsvText(content);
             incoming = csvRowsToBooks(rows, defaultShelf);
@@ -2753,7 +2297,11 @@
           saveBooks();
           renderBooks();
           document.getElementById("importModal").classList.remove("open");
-          alert(`Import complete! ${added} book${added === 1 ? "" : "s"} added (${books.length} total in library).`);
+
+          const missingCovers = books.filter(b => !b.coverUrl).length;
+          if (missingCovers > 0 && confirm(`Imported ${added} books (${books.length} total)!\n\nWould you like to automatically fetch cover photos now?`)) {
+            fetchMissingCovers();
+          }
         } catch (err) {
           alert(`Import failed: ${err.message || "Could not read file."}`);
         }
@@ -2761,13 +2309,34 @@
       reader.readAsText(file);
     });
 
-    // Export JSON
-    document.getElementById("exportBtn").addEventListener("click", () => {
+    // Export Modal (JSON backup OR full self-contained HTML with saves)
+    document.getElementById("exportModalBtn").addEventListener("click", () => {
+      document.getElementById("exportModal").classList.add("open");
+    });
+
+    document.getElementById("exportJsonBtn").addEventListener("click", () => {
       const blob = new Blob([JSON.stringify(books, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `reading-log-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `reading-log-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("exportHtmlBtn").addEventListener("click", () => {
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelector("#embeddedBooksData").textContent = JSON.stringify(books).replace(/<\//g, "<\\/");
+      const savedTheme = localStorage.getItem(THEME_KEY) || "";
+      clone.querySelector("#embeddedThemeData").textContent = savedTheme.replace(/<\//g, "<\\/");
+      // Clear dynamic grid before saving so script re-renders cleanly on open
+      clone.querySelector("#bookGrid").innerHTML = "";
+      const html = "<!DOCTYPE html>\n" + clone.outerHTML;
+      const blob = new Blob([html], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `reading-log-saved-${new Date().toISOString().slice(0, 10)}.html`;
       a.click();
       URL.revokeObjectURL(url);
     });
@@ -2826,7 +2395,10 @@
       document.getElementById("hexAccent").textContent = theme.accent;
       document.getElementById("hexText").textContent = theme.text;
 
-      localStorage.setItem(THEME_KEY, JSON.stringify(theme));
+      idbSet(THEME_KEY, theme);
+      if (storageAvailable) {
+        try { localStorage.setItem(THEME_KEY, JSON.stringify(theme)); } catch {}
+      }
     }
 
     function initTheme() {
@@ -2863,16 +2435,22 @@
         document.getElementById("themeModal").classList.add("open");
       });
 
+      let loadedTheme = null;
       try {
-        const saved = JSON.parse(localStorage.getItem(THEME_KEY));
-        applyTheme(saved && saved.bg ? saved : THEME_PRESETS[0]);
-      } catch {
-        applyTheme(THEME_PRESETS[0]);
+        if (storageAvailable) loadedTheme = JSON.parse(localStorage.getItem(THEME_KEY));
+      } catch {}
+      if (!loadedTheme) {
+        try {
+          const embTheme = document.getElementById("embeddedThemeData").textContent.trim();
+          if (embTheme) loadedTheme = JSON.parse(embTheme);
+        } catch {}
       }
+      applyTheme(loadedTheme && loadedTheme.bg ? loadedTheme : THEME_PRESETS[0]);
     }
 
     initTheme();
     renderBooks();
+    hydrateFromIdbIfNeeded();
   </script>
 </body>
 </html>
